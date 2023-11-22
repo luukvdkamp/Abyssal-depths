@@ -20,7 +20,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             r.AddForce(transform.up * jumpSpeed * Time.deltaTime);
         }

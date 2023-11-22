@@ -588,7 +588,7 @@ MonoBehaviour:
   r: {fileID: 301263012}
   isGrounded: 0
   speed: 10
-  jumpSpeed: 40000
+  jumpSpeed: 10000
 --- !u!1 &313359095
 GameObject:
   m_ObjectHideFlags: 0
