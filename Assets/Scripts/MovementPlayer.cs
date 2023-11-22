@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour
 {
     private Vector3 movement;
-    public Rigidbody r;
+    public Rigidbody rigidbody;
     public bool isGrounded;
 
     [Header("Speed values")]
@@ -15,14 +15,15 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
         float speedCount = Input.GetAxis("Horizontal");
-        r.velocity = new Vector3(speedCount * speed, r.velocity.y, r.velocity.z);
+        rigidbody.velocity = new Vector3(speedCount * speed, rigidbody.velocity.y, rigidbody.velocity.z);
+
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded && GetComponent<WallJumping>().onWall == false)
         {
-            r.AddForce(transform.up * jumpSpeed * Time.deltaTime);
+            rigidbody.AddForce(transform.up * jumpSpeed * Time.deltaTime);
         }
     }
 }
