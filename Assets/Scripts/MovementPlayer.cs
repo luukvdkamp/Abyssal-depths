@@ -15,7 +15,7 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
         float speedCount = Input.GetAxis("Horizontal");
-        rigidbody.velocity = new Vector3(speedCount * speed, rigidbody.velocity.y, rigidbody.velocity.z);
+        rigidbody.AddForce(transform.right * speedCount * speed);
 
     }
 
