@@ -1249,24 +1249,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491489735}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &532716435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2131625067532996917, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
-    type: 3}
-  m_PrefabInstance: {fileID: 5810286805147739283}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &532716443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532716435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69bd73ce0cb27704c8d63914abdaef56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &573233530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,6 +1928,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &911555190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 911555191}
+  m_Layer: 0
+  m_Name: barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &911555191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911555190}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.69, z: 0}
+  m_LocalScale: {x: 2.5, y: 1.6666665, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5810286805147739284}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &973238742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,6 +3644,11 @@ PrefabInstance:
       propertyPath: wallJumpingSideSpeed
       value: 50000
       objectReference: {fileID: 0}
+    - target: {fileID: 1187568305577577523, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+        type: 3}
+      propertyPath: m_Name
+      value: Bow
+      objectReference: {fileID: 0}
     - target: {fileID: 2131625067532996917, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
         type: 3}
       propertyPath: m_Name
@@ -3703,13 +3721,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2131625067532996917, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2906093927304085224, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 532716443}
+      addedObject: {fileID: 911555191}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1187568305577577523, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5810286805147739286}
   m_SourcePrefab: {fileID: 100100000, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27, type: 3}
+--- !u!4 &5810286805147739284 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2906093927304085224, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+    type: 3}
+  m_PrefabInstance: {fileID: 5810286805147739283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5810286805147739285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1187568305577577523, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+    type: 3}
+  m_PrefabInstance: {fileID: 5810286805147739283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5810286805147739286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810286805147739285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf0d8777b7663244a8a9d39308024ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrel: {fileID: 911555191}
+  bulletPrefab: {fileID: 9102819637838980277, guid: 8335ce2184ba6864783e037299b448ae,
+    type: 3}
+  chargeTime: 0
+  maxChargeTime: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
