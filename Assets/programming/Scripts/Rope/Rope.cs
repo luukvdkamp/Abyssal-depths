@@ -11,24 +11,21 @@ public class Rope : MonoBehaviour
     public Transform leftPosition;
 
     public float verticalSpeed;
+    public float upJumpSpeed;
+    public float sideSpeed;
+
+    public bool resetJump;
+    private float resetJumpCounter;
+    public float maxResetJump;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && resetJump == false)
         {
             onRope = true;
             player = other.gameObject;
             player.GetComponent<Rigidbody>().useGravity = false;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            onRope = false;
-            player.GetComponent<Rigidbody>().useGravity = true;
-            player.GetComponent<MovementPlayer>().enabled = true;
+            player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }
 
@@ -42,38 +39,70 @@ public class Rope : MonoBehaviour
             float verticalMovement = Input.GetAxis("Vertical");
 
 
-            if(horizontalMovement > 0.7f)
+            if(horizontalMovement > 0.2f)
             {
                 //right
                 player.transform.position = new Vector3(rightPosition.position.x, player.transform.position.y, player.transform.position.z);
+
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    resetJump = true;
+                    player.GetComponent<Rigidbody>().AddForce(transform.right * sideSpeed * Time.deltaTime);
+
+                }
             }
 
-            else if(horizontalMovement < -0.7f)
+            else if(horizontalMovement < -0.2f)
             {
                 //left
                 player.transform.position = new Vector3(leftPosition.position.x, player.transform.position.y, player.transform.position.z);
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    resetJump = true;
+                    player.GetComponent<Rigidbody>().AddForce(-transform.right * sideSpeed * Time.deltaTime);
+
+                }
             }
 
             else if(horizontalMovement == 0)
             {
                 //middle
                 player.transform.position = new Vector3(transform.position.x, player.transform.position.y, player.transform.position.z);
+
             }
 
 
 
 
-            if(verticalMovement > 0.7f)
+            if(verticalMovement > 0.2f)
             {
                 //up
                 player.transform.Translate(transform.up * verticalSpeed * Time.deltaTime);
             }
 
-            else if(verticalMovement < -0.7f)
+            else if(verticalMovement < -0.2f)
             {
                 //down
                 player.transform.Translate(-transform.up * verticalSpeed * Time.deltaTime);
             }
+        }
+
+        //making sure the player does not activate trigger after jumping off rope
+        if(resetJump)
+        {
+            onRope = false;
+            resetJumpCounter += Time.deltaTime;
+            player.GetComponent<Rigidbody>().useGravity = true;
+            player.GetComponent<MovementPlayer>().enabled = true;
+
+            if (resetJumpCounter > maxResetJump)
+            {
+                resetJump = false;
+                resetJumpCounter = 0;
+           
+            }
+
         }
     }
 }

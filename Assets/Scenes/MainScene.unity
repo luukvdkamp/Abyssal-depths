@@ -2826,7 +2826,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1502421010
 MeshRenderer:
@@ -2893,7 +2893,11 @@ MonoBehaviour:
   onRope: 0
   rightPosition: {fileID: 432833392}
   leftPosition: {fileID: 1944745290}
-  verticalSpeed: 1
+  verticalSpeed: 4
+  upJumpSpeed: 200000
+  sideSpeed: 200000
+  resetJump: 0
+  maxResetJump: 0.4
 --- !u!1 &1639846474
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,7 +3195,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1934497264
 MeshRenderer:
@@ -3258,7 +3262,11 @@ MonoBehaviour:
   onRope: 0
   rightPosition: {fileID: 1116014887}
   leftPosition: {fileID: 1824042357}
-  verticalSpeed: 1
+  verticalSpeed: 4
+  upJumpSpeed: 200000
+  sideSpeed: 200000
+  resetJump: 0
+  maxResetJump: 0.4
 --- !u!1 &1944745289
 GameObject:
   m_ObjectHideFlags: 0
