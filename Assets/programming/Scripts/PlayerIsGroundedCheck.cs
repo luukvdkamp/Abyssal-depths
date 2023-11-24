@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerIsGroundedCheck : MonoBehaviour
 {
     public MovementPlayer movementPlayer;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Ground")
+        if(other.gameObject.tag == "Ground" && movementPlayer.isGrounded == false)
         {
             movementPlayer.isGrounded = true;
         }

@@ -245,7 +245,7 @@ MonoBehaviour:
   playerRigidbody: {fileID: 4011209982585509921}
   maxSlideSpeed: 100
   speedIncrease: 0.4
-  wallJumpingUpSpeed: 25000
+  wallJumpingUpSpeed: 45000
   wallJumpingSideSpeed: 70000
   onLeftWall: 0
   onRightWall: 0
