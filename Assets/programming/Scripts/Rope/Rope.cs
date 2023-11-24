@@ -9,6 +9,7 @@ public class Rope : MonoBehaviour
 
     public Transform rightPosition;
     public Transform leftPosition;
+    public Transform endOfRopePosition;
 
     public float verticalSpeed;
     public float upJumpSpeed;
@@ -85,6 +86,12 @@ public class Rope : MonoBehaviour
             {
                 //down
                 player.transform.Translate(-transform.up * verticalSpeed * Time.deltaTime);
+            }
+
+            //if player slide off rope
+            if(player.transform.position.y < endOfRopePosition.position.y)
+            {
+                resetJump = true;
             }
         }
 
