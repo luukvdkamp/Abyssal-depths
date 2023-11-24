@@ -14,8 +14,10 @@ public class MovementPlayer : MonoBehaviour
     public float jumpSpeed;
     public float jumpSideSpeed;
 
+    /*
     public float velocityLimit;
     public float velocityLimiterMultiplier;
+    */
 
     public float gravity;
     public float gravityMultiplier;
