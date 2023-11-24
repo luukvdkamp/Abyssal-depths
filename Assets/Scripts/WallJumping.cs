@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallJumping : MonoBehaviour
 {
-    public Rigidbody rigidbody;
+    public Rigidbody playerRigidbody;
 
     public float maxSlideSpeed;
     public float speedIncrease;
@@ -24,7 +24,7 @@ public class WallJumping : MonoBehaviour
     {
         if(onWall)
         {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, -slideSpeed, rigidbody.velocity.z);
+            playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, -slideSpeed, playerRigidbody.velocity.z);
 
             slideSpeed += speedIncrease;
 
@@ -42,8 +42,8 @@ public class WallJumping : MonoBehaviour
         if (onLeftWall)
         {
             //onLeftWall
-            rigidbody.AddForce(transform.right * wallJumpingSideSpeed * Time.deltaTime);
-            rigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.deltaTime);
+            playerRigidbody.AddForce(transform.right * wallJumpingSideSpeed * Time.deltaTime);
+            playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.deltaTime);
 
             onWall = false;
             onLeftWall = false;
@@ -54,8 +54,8 @@ public class WallJumping : MonoBehaviour
         else
         {
             //onRightWall
-            rigidbody.AddForce(-transform.right * wallJumpingSideSpeed * Time.deltaTime);
-            rigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.deltaTime);
+            playerRigidbody.AddForce(-transform.right * wallJumpingSideSpeed * Time.deltaTime);
+            playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.deltaTime);
 
             onWall = false;
             onRightWall = false;

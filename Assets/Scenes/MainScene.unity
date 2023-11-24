@@ -588,13 +588,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9dab0f3f7e6b4458c8d796770f1f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 301263012}
+  playerRigidbody: {fileID: 301263012}
   isGrounded: 0
-  speed: 1
-  jumpSpeed: 100000
-  velocityLmit: 10
-  velocityLimiterMultiplier: 10
-  dragWhenStanding: 10
+  speedCount: 0
+  speed: 0.7
+  jumpSpeed: 10000
+  jumpSideSpeed: 5000
+  velocityLimit: 40
+  velocityLimiterMultiplier: 1
+  gravity: 0
+  gravityMultiplier: 1
 --- !u!114 &301263014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cacb8dadc33e97498c9e593432be923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 301263012}
+  playerRigidbody: {fileID: 301263012}
   maxSlideSpeed: 100
   speedIncrease: 0.4
   wallJumpingUpSpeed: 25000
