@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1034475215256865702}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,8 +284,6 @@ MonoBehaviour:
   speed: 0.7
   jumpSpeed: 30000
   jumpSideSpeed: 5000
-  velocityLimit: 40
-  velocityLimiterMultiplier: 1
   gravity: 0
   gravityMultiplier: 0.7
 --- !u!54 &4011209982585509921

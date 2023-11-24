@@ -2782,6 +2782,7 @@ GameObject:
   - component: {fileID: 1502421011}
   - component: {fileID: 1502421010}
   - component: {fileID: 1502421009}
+  - component: {fileID: 1502421012}
   m_Layer: 0
   m_Name: rope
   m_TagString: Ground
@@ -2877,6 +2878,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502421007}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1502421012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502421007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2845ab921c6ca294da90840684b98524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onRope: 0
+  rightPosition: {fileID: 432833392}
+  leftPosition: {fileID: 1944745290}
+  verticalSpeed: 1
 --- !u!1 &1639846474
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,6 +3147,7 @@ GameObject:
   - component: {fileID: 1934497265}
   - component: {fileID: 1934497264}
   - component: {fileID: 1934497263}
+  - component: {fileID: 1934497266}
   m_Layer: 0
   m_Name: rope
   m_TagString: Ground
@@ -3225,6 +3243,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934497261}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1934497266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934497261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2845ab921c6ca294da90840684b98524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onRope: 0
+  rightPosition: {fileID: 1116014887}
+  leftPosition: {fileID: 1824042357}
+  verticalSpeed: 1
 --- !u!1 &1944745289
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,6 +3627,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2131625067532996917, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4771391180372925142, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
         type: 3}
