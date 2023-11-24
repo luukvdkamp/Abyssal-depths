@@ -8,10 +8,11 @@ public class PlayerWallTrigger : MonoBehaviour
     public bool isRight;
 
     public WallJumping wallJumping;
+    public MovementPlayer movementPlayer;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Ground")
+        if(other.gameObject.tag == "Ground" && movementPlayer.isGrounded == false)
         {
             wallJumping.onWall = true;
 

@@ -31,7 +31,7 @@ public class MovementPlayer : MonoBehaviour
         speedCount = Input.GetAxis("Horizontal");
 
         //reset velocity when no input
-        if(speedCount < 0.7f && speedCount > -0.7f)
+        if(speedCount < 0.7f && speedCount > -0.7f && isGrounded)
         {
             playerRigidbody.velocity = new Vector3(0, playerRigidbody.velocity.y, playerRigidbody.velocity.z);
         }
