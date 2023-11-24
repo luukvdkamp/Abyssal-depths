@@ -3299,6 +3299,7 @@ MonoBehaviour:
   isLeft: 1
   isRight: 0
   wallJumping: {fileID: 599024421}
+  movementPlayer: {fileID: 599024423}
 --- !u!65 &1757298763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3998,6 +3999,7 @@ MonoBehaviour:
   isLeft: 0
   isRight: 1
   wallJumping: {fileID: 599024421}
+  movementPlayer: {fileID: 599024423}
 --- !u!65 &1987769034
 BoxCollider:
   m_ObjectHideFlags: 0
