@@ -4117,6 +4117,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4011209982585509921, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+        type: 3}
+      propertyPath: m_Drag
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4771391180372925142, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4176,6 +4181,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880200181901100171, guid: 8cc62dc74e79b1944a4b7aa03b7d2d27,
+        type: 3}
+      propertyPath: gravityMultiplier
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

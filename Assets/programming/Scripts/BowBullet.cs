@@ -17,7 +17,10 @@ public class BowBullet : MonoBehaviour
 
     private void Update()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * chargeTime * speed * lowerForce * Time.deltaTime, ForceMode.Impulse);
+        float bulletSpeed = chargeTime * speed * lowerForce;
+
+        GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+
         GetComponent<Rigidbody>().AddForce(Vector3.down * amountofGravity * Time.deltaTime);
 
         lowerForce -= Time.deltaTime;
