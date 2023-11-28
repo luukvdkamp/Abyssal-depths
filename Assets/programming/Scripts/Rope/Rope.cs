@@ -89,7 +89,7 @@ public class Rope : MonoBehaviour
             }
 
             //if player slide off rope
-            if(player.transform.position.y < endOfRopePosition.position.y)
+            if(player.transform.position.y < endOfRopePosition.position.y && verticalMovement < -0.2f)
             {
                 resetJump = true;
             }
