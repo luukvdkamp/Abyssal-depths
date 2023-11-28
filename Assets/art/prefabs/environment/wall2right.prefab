@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7f6ef30d86d099f46a43742b93c429a1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.62375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6ef30d86d099f46a43742b93c429a1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.200216
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6ef30d86d099f46a43742b93c429a1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.149998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6ef30d86d099f46a43742b93c429a1,
         type: 3}
@@ -67,6 +67,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: wall2right
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f6ef30d86d099f46a43742b93c429a1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f6ef30d86d099f46a43742b93c429a1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
