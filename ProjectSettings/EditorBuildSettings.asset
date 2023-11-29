@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: 14a7787c0c90afe45aefadb81821eece
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LuukScene.unity
     guid: cae2036a9b72196418ca769f146bbbf4
+  - enabled: 1
+    path: Assets/Scenes/NiekScene.unity
+    guid: d28d50f4204c27145a423fd904952377
   m_configObjects: {}
