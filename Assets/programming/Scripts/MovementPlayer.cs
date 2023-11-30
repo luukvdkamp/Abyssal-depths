@@ -35,16 +35,16 @@ public class MovementPlayer : MonoBehaviour
 
         if(isGrounded)
         {
-            transform.Translate(transform.right * speedCount * speed);
+            transform.Translate(transform.right * speedCount * speed * Time.deltaTime);
         }
 
         else
         {
-            playerRigidbody.AddForce(transform.right * speedCount * airSpeed, ForceMode.Impulse);
+            playerRigidbody.AddForce(transform.right * speedCount * airSpeed * Time.deltaTime, ForceMode.Impulse);
         }
 
         //gravity
-        playerRigidbody.AddForce(-transform.up * gravity);
+        playerRigidbody.AddForce(-transform.up * gravity * Time.deltaTime);
         if(isGrounded == false)
         {
             gravity += gravityMultiplier;
@@ -66,13 +66,13 @@ public class MovementPlayer : MonoBehaviour
             if(speedCount == 1)
             {
                 //right
-                transform.Translate(transform.right * jumpSideSpeed * Time.deltaTime);
+                playerRigidbody.AddForce(transform.right * jumpSideSpeed * Time.deltaTime, ForceMode.Impulse);
             }
 
             else if(speedCount == -1)
             {
                 //left
-                transform.Translate(-transform.right * jumpSideSpeed * Time.deltaTime);
+                playerRigidbody.AddForce(-transform.right * jumpSideSpeed * Time.deltaTime, ForceMode.Impulse);
             }
         }
 
