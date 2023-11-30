@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 8880200181901100171}
   - component: {fileID: 4011209982585509921}
   - component: {fileID: 1034475215256865702}
+  - component: {fileID: -3489633839185521349}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -376,6 +377,21 @@ MonoBehaviour:
   onRightWall: 0
   onWall: 0
   slideSpeed: 0
+--- !u!114 &-3489633839185521349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131625067532996917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b4cd3238b8eba4d8c956a18834acda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementPlayer: {fileID: 8880200181901100171}
+  healthSlider: {fileID: 0}
+  minimumFallDamageTime: 0.7
 --- !u!1 &2462029427692124442
 GameObject:
   m_ObjectHideFlags: 0
