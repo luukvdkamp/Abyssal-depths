@@ -5,11 +5,12 @@ using UnityEngine;
 public class Rope : MonoBehaviour
 {
     public bool onRope;
-    private GameObject player;
+    public GameObject player;
 
     public Transform rightPosition;
     public Transform leftPosition;
-    public Transform endOfRopePosition;
+    public Transform endOfRopeUpPosition;
+    public Transform endOfRopeDownPosition;
 
     public float verticalSpeed;
     public float upJumpSpeed;
@@ -18,26 +19,35 @@ public class Rope : MonoBehaviour
     public bool resetJump;
     private float resetJumpCounter;
     public float maxResetJump;
+    public float verticalMovement;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player" && resetJump == false)
-        {
-            onRope = true;
-            player = other.gameObject;
-            player.GetComponent<Rigidbody>().useGravity = false;
-            player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        }
-    }
+    
 
     private void Update()
     {
-        if(onRope)
+        //check if holding up
+        if (resetJump == false && verticalMovement > 0.2f)
+        {
+            //check if player right position horizontal
+            if(player.transform.position.x < rightPosition.position.x && player.transform.position.x > leftPosition.position.x)
+            {
+                if (player.transform.position.y < endOfRopeUpPosition.position.y && player.transform.position.y > endOfRopeDownPosition.position.y)
+                {
+                    onRope = true;
+                    player.GetComponent<Rigidbody>().useGravity = false;
+                    player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                }
+            }
+            
+        }
+
+        verticalMovement = Input.GetAxisRaw("Vertical");
+
+        if (onRope)
         {
             player.GetComponent<MovementPlayer>().enabled = false;
 
-            float horizontalMovement = Input.GetAxis("Horizontal");
-            float verticalMovement = Input.GetAxis("Vertical");
+            float horizontalMovement = Input.GetAxisRaw("Horizontal");
 
 
             if(horizontalMovement > 0.2f)
@@ -49,6 +59,7 @@ public class Rope : MonoBehaviour
                 {
                     resetJump = true;
                     player.GetComponent<Rigidbody>().AddForce(transform.right * sideSpeed * Time.deltaTime);
+                    player.GetComponent<Rigidbody>().AddForce(transform.up * upJumpSpeed * Time.deltaTime);
 
                 }
             }
@@ -62,6 +73,7 @@ public class Rope : MonoBehaviour
                 {
                     resetJump = true;
                     player.GetComponent<Rigidbody>().AddForce(-transform.right * sideSpeed * Time.deltaTime);
+                    player.GetComponent<Rigidbody>().AddForce(transform.up * upJumpSpeed * Time.deltaTime);
 
                 }
             }
@@ -89,7 +101,7 @@ public class Rope : MonoBehaviour
             }
 
             //if player slide off rope
-            if(player.transform.position.y < endOfRopePosition.position.y && verticalMovement < -0.2f)
+            if(player.transform.position.y < endOfRopeDownPosition.position.y && verticalMovement < -0.2f)
             {
                 resetJump = true;
             }

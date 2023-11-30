@@ -11,6 +11,7 @@ public class MovementPlayer : MonoBehaviour
 
     [Header("Speed values")]
     public float speed;
+    public float airSpeed;
     public float jumpSpeed;
     public float jumpSideSpeed;
 
@@ -29,17 +30,18 @@ public class MovementPlayer : MonoBehaviour
 
     void Update()
     {
-        //horizontal movement
-        speedCount = Input.GetAxis("Horizontal");
+        //horizontal movement, gebruik het nieuwe systeem.
+        speedCount = Input.GetAxisRaw("Horizontal");
 
-        //reset velocity when no input
-        
-        if(speedCount < 0.7f && speedCount > -0.7f && isGrounded)
+        if(isGrounded)
         {
-            playerRigidbody.velocity = new Vector3(0, playerRigidbody.velocity.y, playerRigidbody.velocity.z);
+            transform.Translate(transform.right * speedCount * speed);
         }
 
-        playerRigidbody.AddForce(transform.right * speedCount * speed, ForceMode.Impulse);
+        else
+        {
+            playerRigidbody.AddForce(transform.right * speedCount * airSpeed, ForceMode.Impulse);
+        }
 
         //gravity
         playerRigidbody.AddForce(-transform.up * gravity);
@@ -64,13 +66,13 @@ public class MovementPlayer : MonoBehaviour
             if(speedCount == 1)
             {
                 //right
-                playerRigidbody.AddForce(transform.right * jumpSideSpeed * Time.deltaTime);
+                transform.Translate(transform.right * jumpSideSpeed * Time.deltaTime);
             }
 
             else if(speedCount == -1)
             {
                 //left
-                playerRigidbody.AddForce(-transform.right * jumpSideSpeed * Time.deltaTime);
+                transform.Translate(-transform.right * jumpSideSpeed * Time.deltaTime);
             }
         }
 
