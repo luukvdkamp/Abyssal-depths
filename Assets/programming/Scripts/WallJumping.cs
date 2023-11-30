@@ -24,7 +24,7 @@ public class WallJumping : MonoBehaviour
     {
         if(onWall)
         {
-            playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, -slideSpeed, playerRigidbody.velocity.z);
+            transform.Translate(Vector3.down * slideSpeed * Time.deltaTime);
 
             slideSpeed += speedIncrease;
 

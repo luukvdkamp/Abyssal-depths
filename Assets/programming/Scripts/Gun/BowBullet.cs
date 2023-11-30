@@ -28,4 +28,12 @@ public class BowBullet : MonoBehaviour
 
         Destroy(gameObject, lifeTime);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
