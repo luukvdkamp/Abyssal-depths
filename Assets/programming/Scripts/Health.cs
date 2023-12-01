@@ -23,7 +23,10 @@ public class Health : MonoBehaviour
         if(GetComponent<Rigidbody>().velocity.y < 0 && GetComponent<Rigidbody>().useGravity)
         {
             fallingTime += Time.deltaTime;
-            fallingSound.Play();
+            if(fallingSound.isPlaying == false)
+            {
+                fallingSound.Play();
+            }
             
         }
         else
