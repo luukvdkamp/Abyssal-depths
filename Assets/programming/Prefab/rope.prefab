@@ -169,10 +169,11 @@ MonoBehaviour:
   endOfRopeUpPosition: {fileID: 220047570242142297}
   endOfRopeDownPosition: {fileID: 6125441027238102977}
   verticalSpeed: 4
-  upJumpSpeed: 200000
+  upJumpSpeed: 70000
   sideSpeed: 200000
   resetJump: 0
   maxResetJump: 0.4
+  verticalMovement: 0
 --- !u!1 &8218915012443807323
 GameObject:
   m_ObjectHideFlags: 0

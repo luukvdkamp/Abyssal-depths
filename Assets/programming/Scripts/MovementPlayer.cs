@@ -8,20 +8,22 @@ public class MovementPlayer : MonoBehaviour
     public Rigidbody playerRigidbody;
     public bool isGrounded;
     public float speedCount;
+    public bool jumping;
 
     [Header("Speed values")]
     public float speed;
     public float airSpeed;
+
     public float jumpSpeed;
     public float jumpSideSpeed;
 
-    /*
-    public float velocityLimit;
-    public float velocityLimiterMultiplier;
-    */
+    public float jumpResetTime;
+    private float jumpResetCounter;
 
     public float gravity;
     public float gravityMultiplier;
+
+
 
     private void Start()
     {
@@ -54,34 +56,40 @@ public class MovementPlayer : MonoBehaviour
         {
             gravity = 0;
         }
+
+        //avoid double jump
+        jumpResetCounter += Time.deltaTime;
+
+        //jump
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && GetComponent<WallJumping>().onWall == false && jumpResetCounter > jumpResetTime)
+        {
+            jumping = true;
+            
+        }
     }
 
     private void FixedUpdate()
     {
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && GetComponent<WallJumping>().onWall == false)
+        
+        if(jumping)
         {
+            print("jump");
+            jumpResetCounter = 0;
             playerRigidbody.AddForce(transform.up * jumpSpeed * Time.deltaTime);
 
-            if(speedCount == 1)
+            if (speedCount == 1)
             {
                 //right
-                playerRigidbody.AddForce(transform.right * jumpSideSpeed * Time.deltaTime, ForceMode.Impulse);
+                transform.Translate(transform.right * jumpSideSpeed * Time.deltaTime);
             }
 
-            else if(speedCount == -1)
+            else if (speedCount == -1)
             {
                 //left
-                playerRigidbody.AddForce(-transform.right * jumpSideSpeed * Time.deltaTime, ForceMode.Impulse);
+                transform.Translate(-transform.right * jumpSideSpeed * Time.deltaTime);
             }
-        }
 
-        //limit velocity
-        /*
-        if (playerRigidbody.velocity.magnitude > velocityLimit)
-        {
-            playerRigidbody.velocity = playerRigidbody.velocity.normalized * velocityLimiterMultiplier;
+            jumping = false;
         }
-        */
     }
 }
