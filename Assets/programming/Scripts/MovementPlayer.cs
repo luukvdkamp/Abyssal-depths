@@ -59,7 +59,7 @@ public class MovementPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         //jump
-        if (Input.GetKey(KeyCode.Space) && isGrounded && GetComponent<WallJumping>().onWall == false)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && GetComponent<WallJumping>().onWall == false)
         {
             playerRigidbody.AddForce(transform.up * jumpSpeed * Time.deltaTime);
 
