@@ -7,9 +7,9 @@ public class Health : MonoBehaviour
 {
     public MovementPlayer movementPlayer;
     public Slider healthSlider;
-    private float timeInAir;
-    public float minimumFallDamageTime;
-
+    public AudioSource fallingSound;
+    public float minFallingTime;
+    private float fallingTime;
 
     // Start is called before the first frame update
     void Start()
@@ -20,23 +20,24 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //check if player in air
-        if(movementPlayer.isGrounded == false && GetComponent<Rigidbody>().useGravity) //check if on rope
+        if(GetComponent<Rigidbody>().velocity.y < 0 && GetComponent<Rigidbody>().useGravity)
         {
-            timeInAir += Time.deltaTime;
+            fallingTime += Time.deltaTime;
+            fallingSound.Play();
+            
         }
-
         else
         {
-            if (timeInAir > minimumFallDamageTime)
-            {
-                healthSlider.value -= timeInAir;
-            }
-
-            //reset air time
-            timeInAir = 0;
+            fallingTime = 0;
+            fallingSound.Stop();
         }
 
+        if(fallingTime > minFallingTime)
+        {
+            healthSlider.value -= fallingTime;
+            fallingTime = 0;
+            fallingSound.Stop();
+        }
         
     }
 }
