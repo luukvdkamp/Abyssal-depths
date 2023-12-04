@@ -169,7 +169,7 @@ MonoBehaviour:
   endOfRopeUpPosition: {fileID: 220047570242142297}
   endOfRopeDownPosition: {fileID: 6125441027238102977}
   verticalSpeed: 4
-  upJumpSpeed: 70000
+  upJumpSpeed: 20000
   sideSpeed: 200000
   resetJump: 0
   maxResetJump: 0.4

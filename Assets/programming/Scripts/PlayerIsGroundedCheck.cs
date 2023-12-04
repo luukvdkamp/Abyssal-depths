@@ -5,13 +5,21 @@ using UnityEngine;
 public class PlayerIsGroundedCheck : MonoBehaviour
 {
     public MovementPlayer movementPlayer;
+    private int objectsInTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Ground")
         {
             movementPlayer.isGrounded = true;
-            movementPlayer.playerRigidbody.velocity = new Vector3(0, 0, 0);
+            if(objectsInTrigger == 0)
+            {
+                movementPlayer.playerRigidbody.velocity = new Vector3(0, 0, 0);
+                
+            }
+
+            objectsInTrigger++;
+            
         }
     }
 
@@ -29,5 +37,7 @@ public class PlayerIsGroundedCheck : MonoBehaviour
         {
             movementPlayer.isGrounded = false;
         }
+
+        objectsInTrigger--;
     }
 }
