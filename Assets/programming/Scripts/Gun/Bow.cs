@@ -9,11 +9,12 @@ public class Bow : MonoBehaviour
 
     public float chargeTime;
     public float maxChargeTime;
+    public float minimumChargeTime;
 
     void Update()
     {
 
-        if (Input.GetButtonUp("Fire1") || chargeTime > maxChargeTime)
+        if (Input.GetButtonUp("Fire1") && chargeTime > minimumChargeTime || chargeTime > maxChargeTime)
         {
 
             GameObject prefab = Instantiate(bulletPrefab, barrel.position, barrel.rotation);

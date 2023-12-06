@@ -33,7 +33,8 @@ public class Turret : MonoBehaviour
             if(fireCount > fireRate)
             {
                 GameObject prefab = Instantiate(bullet, barrel.position, barrel.rotation);
-                prefab.GetComponent<TurretBullet>().barrelRotation = barrel;
+                prefab.GetComponent<EnemyBullet>().barrelRotation = barrel;
+                prefab.GetComponent<EnemyBullet>().enemyThatShotBullet = transform;
                 fireCount = 0;
             }
         }

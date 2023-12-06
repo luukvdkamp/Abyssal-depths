@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 9217309836133925402}
   - component: {fileID: 628376869939086221}
   - component: {fileID: 4125023066053060976}
-  - component: {fileID: -994850077639115104}
   - component: {fileID: 8123414638206842459}
+  - component: {fileID: -5199162798555415493}
   m_Layer: 0
   m_Name: bulletTurret
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9e93dd7e74f996e4bb0ad82403d305da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,22 +107,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-994850077639115104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5645648518968470385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc688f87cb628144fa90cc621f179551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barrelRotation: {fileID: 0}
-  bulletSpeed: 7
-  bulletLifetime: 4
-  bulletDamage: 0.5
 --- !u!54 &8123414638206842459
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,3 +134,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5199162798555415493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645648518968470385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc688f87cb628144fa90cc621f179551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyThatShotBullet: {fileID: 0}
+  barrelRotation: {fileID: 0}
+  bulletSpeed: 7
+  bulletLifetime: 4
+  lifetimeCount: 0
+  bulletDamage: 0.5

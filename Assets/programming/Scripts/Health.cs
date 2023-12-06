@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public MovementPlayer movementPlayer;
     public Slider healthSlider;
     public AudioSource fallingSound;
+    public AudioSource landingSound;
+
     public float minFallingTime;
     private float fallingTime;
 
@@ -22,6 +24,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //fall damage
         velocityY = GetComponent<Rigidbody>().velocity.y;
         if (GetComponent<Rigidbody>().velocity.y < 0 && GetComponent<Rigidbody>().useGravity && movementPlayer.isGrounded == false)
         {
@@ -43,6 +46,7 @@ public class Health : MonoBehaviour
             healthSlider.value -= fallingTime;
             fallingTime = 0;
             fallingSound.Stop();
+            landingSound.Play();
         }
         
     }

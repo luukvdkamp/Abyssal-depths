@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerIsGroundedCheck : MonoBehaviour
 {
     public MovementPlayer movementPlayer;
-    private int objectsInTrigger;
+    public int objectsInTrigger;
+
+    public void Update()
+    {
+        objectsInTrigger = Mathf.Clamp(objectsInTrigger, 0, 2);    
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +20,7 @@ public class PlayerIsGroundedCheck : MonoBehaviour
             if(objectsInTrigger == 0)
             {
                 movementPlayer.playerRigidbody.velocity = new Vector3(0, 0, 0);
+                print("RESET");
                 
             }
 

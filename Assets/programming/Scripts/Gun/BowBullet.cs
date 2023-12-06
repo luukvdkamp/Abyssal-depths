@@ -33,14 +33,21 @@ public class BowBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Ground")
         {
             Destroy(gameObject);
         }
 
-        if(collision.gameObject.tag == "Player")
+        else if(collision.gameObject.tag == "Player")
         {
             Physics.IgnoreCollision(GetComponent<BoxCollider>(), collision.gameObject.GetComponent<Collider>());
+            Destroy(gameObject);
+        }
+
+        else if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }
