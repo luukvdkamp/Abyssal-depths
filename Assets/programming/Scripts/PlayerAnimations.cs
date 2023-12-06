@@ -12,6 +12,9 @@ public class PlayerAnimations : MonoBehaviour
 
     public Animator animator;
 
+    private bool isJumping;
+    private bool ableToLand;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,32 @@ public class PlayerAnimations : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+
+        //jumping
+        if(movementPlayer.jumping)
+        {
+            animator.SetBool("Jumping", true);
+            isJumping = true;
+
+            animator.SetBool("Landing", false);
+            
+        }
+
+        else
+        {
+            animator.SetBool("Jumping", false);
+        }
+
+        //landing
+        if(isJumping && movementPlayer.isGrounded == false)
+        {
+            ableToLand = true;
+        }
+
+        if(ableToLand && movementPlayer.isGrounded)
+        {
+            animator.SetBool("Landing", true);
         }
     }
 }
