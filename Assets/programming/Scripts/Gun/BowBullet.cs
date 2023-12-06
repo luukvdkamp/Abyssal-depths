@@ -27,13 +27,20 @@ public class BowBullet : MonoBehaviour
         amountofGravity += Time.deltaTime * gravityStrength;
 
         Destroy(gameObject, lifeTime);
+
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+        }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            Physics.IgnoreCollision(GetComponent<BoxCollider>(), collision.gameObject.GetComponent<Collider>());
         }
     }
 }

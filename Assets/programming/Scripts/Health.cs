@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     public float minFallingTime;
     private float fallingTime;
 
-    public float velocityy;
+    public float velocityY;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        velocityy = GetComponent<Rigidbody>().velocity.y;
+        velocityY = GetComponent<Rigidbody>().velocity.y;
         if (GetComponent<Rigidbody>().velocity.y < 0 && GetComponent<Rigidbody>().useGravity && movementPlayer.isGrounded == false)
         {
             fallingTime += Time.deltaTime;
