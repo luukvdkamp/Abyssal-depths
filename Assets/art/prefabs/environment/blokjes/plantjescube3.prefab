@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 2984463699851233795}
   - component: {fileID: 5420272083139543256}
   - component: {fileID: 2009916098297337639}
-  - component: {fileID: 6163481433490548444}
+  - component: {fileID: -6308474058723116398}
   m_Layer: 0
   m_Name: plantjescube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2984463699851233795
 Transform:
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8687496340735655054}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.0000006407499}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -8.75, y: 20, z: -18.314596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38,7 +38,7 @@ Transform:
   - {fileID: 3302294946279493764}
   - {fileID: 1324992979242571687}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &5420272083139543256
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6163481433490548444
+--- !u!65 &-6308474058723116398
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,6 +173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: plantje4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e25a4feac8fdb2944afb5fd8eb000ba5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -246,6 +251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plantje4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e25a4feac8fdb2944afb5fd8eb000ba5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -321,6 +331,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: plantje2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ea621ba746aedb40b6d4e7ae01c88d8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -395,6 +410,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: plantje1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 714fea69433d1564eb98314648601415,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -468,6 +488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plantje3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ad991e93c5574f74f925a0c26bc02443,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
