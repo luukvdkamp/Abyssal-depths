@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
+    public GameObject player;
+
     public MovementPlayer movementPlayer;
     public WallJumping wallJumping;
     public Health health;
@@ -39,15 +41,17 @@ public class PlayerAnimations : MonoBehaviour
             animator.SetBool("Walking", false);
         }
 
-        //rotate mouse aim
+
+        // Rotate mouse aim
         if (gun.targetPosition.position.x > transform.position.x)
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, 90, transform.rotation.z);
+            // Keep the existing X and Z rotation, only modify Y-axis rotation
+            transform.localRotation = Quaternion.Euler(0, 90, 0);
         }
-
         else
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.x, -90, transform.rotation.z);
+            // Keep the existing X and Z rotation, only modify Y-axis rotation
+            transform.localRotation = Quaternion.Euler(0, -90, 0);
         }
 
         //jumping

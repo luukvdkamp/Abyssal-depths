@@ -76,10 +76,13 @@ public class MovementPlayer : MonoBehaviour
         // Define the layer mask to include only the "Ground" layer
         int groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
 
+
+        //slope rotation
+
         // Cast a ray downward to detect the slope angle, using the groundLayerMask
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1, groundLayerMask))
         {
-            print("a");
+            
             // Your existing code to calculate slope angle and rotate the player
             float slopeAngle = Vector3.Angle(hit.normal, Vector3.up) * Mathf.Sign(hit.normal.x);
             //float clampedRotation = Mathf.Clamp(slopeAngle, -45, 45);
@@ -108,7 +111,6 @@ public class MovementPlayer : MonoBehaviour
                 //left
                 transform.Translate(-transform.right * jumpSideSpeed * Time.deltaTime);
             }
-
             jumping = false;
         }
     }
