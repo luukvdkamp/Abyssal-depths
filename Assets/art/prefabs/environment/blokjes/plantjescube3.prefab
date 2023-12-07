@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8687496340735655054}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -8.75, y: 20, z: -18.314596}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e25a4feac8fdb2944afb5fd8eb000ba5,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -265,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e25a4feac8fdb2944afb5fd8eb000ba5,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -349,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1ea621ba746aedb40b6d4e7ae01c88d8,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -433,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 714fea69433d1564eb98314648601415,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -517,7 +517,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ad991e93c5574f74f925a0c26bc02443,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
