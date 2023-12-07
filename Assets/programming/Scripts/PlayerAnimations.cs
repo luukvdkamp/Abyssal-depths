@@ -83,5 +83,11 @@ public class PlayerAnimations : MonoBehaviour
         {
             animator.SetBool("Jumping", false);
         }
+
+
+
+        //bow aiming
+        float angle = gun.angle;
+        animator.SetFloat("AimAngle", angle);
     }
 }
