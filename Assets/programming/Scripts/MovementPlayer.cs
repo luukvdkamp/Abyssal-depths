@@ -50,7 +50,7 @@ public class MovementPlayer : MonoBehaviour
         }
 
         //gravity
-        playerRigidbody.AddForce(-transform.up * gravity * Time.deltaTime);
+        playerRigidbody.AddForce(-Vector3.up * gravity * Time.deltaTime);
         if(isGrounded == false)
         {
             gravity += gravityMultiplier;
@@ -89,6 +89,13 @@ public class MovementPlayer : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, -slopeAngle);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
+
+        else
+        {
+            Vector3 targetEulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+            Quaternion targetRotation = Quaternion.Euler(targetEulerAngles);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
     }
 
     private void FixedUpdate()
@@ -97,6 +104,7 @@ public class MovementPlayer : MonoBehaviour
         if(jumping)
         {
             print("jump");
+
             jumpResetCounter = 0;
             playerRigidbody.AddForce(transform.up * jumpSpeed * Time.deltaTime);
 
