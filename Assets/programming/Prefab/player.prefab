@@ -208,7 +208,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.28, y: 28.33, z: 10.04}
-  m_LocalScale: {x: 1, y: 1.8, z: 0.59424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 335672284594400994}
@@ -315,6 +315,7 @@ MonoBehaviour:
   jumpResetTime: 0
   gravity: 0
   gravityMultiplier: 3
+  playerAnimations: {fileID: 0}
 --- !u!54 &4011209982585509921
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1263,4 +1264,7 @@ MonoBehaviour:
   wallJumping: {fileID: 1034475215256865702}
   health: {fileID: -3489633839185521349}
   bow: {fileID: 4822899052106258315}
+  gun: {fileID: 0}
   animator: {fileID: 41151157079484802}
+  isJumping: 0
+  landingDelayDuration: 0
