@@ -10,11 +10,15 @@ public class PlayerWallTrigger : MonoBehaviour
     public WallJumping wallJumping;
     public MovementPlayer movementPlayer;
 
+    private float collidersInTrigger;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Ground" && movementPlayer.isGrounded == false)
         {
             wallJumping.onWall = true;
+
+            collidersInTrigger++;
 
             if (isLeft)
             {
@@ -32,7 +36,9 @@ public class PlayerWallTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Ground")
+        collidersInTrigger--;
+
+        if (other.gameObject.tag == "Ground" && collidersInTrigger == 0)
         {
             wallJumping.onWall = false;
 

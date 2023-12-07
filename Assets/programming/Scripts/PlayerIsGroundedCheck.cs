@@ -41,9 +41,13 @@ public class PlayerIsGroundedCheck : MonoBehaviour
     {
         if(other.gameObject.tag == "Ground")
         {
-            movementPlayer.isGrounded = false;
-        }
+            objectsInTrigger--;
 
-        objectsInTrigger--;
+            if (objectsInTrigger == 0)
+            {
+                movementPlayer.isGrounded = false;
+
+            }
+        }
     }
 }
