@@ -23,6 +23,9 @@ public class MovementPlayer : MonoBehaviour
     public float gravity;
     public float gravityMultiplier;
 
+    [Header("Player Animation")]
+    public PlayerAnimations playerAnimations;
+
 
 
     private void Start()
@@ -64,8 +67,9 @@ public class MovementPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && GetComponent<WallJumping>().onWall == false && jumpResetCounter > jumpResetTime)
         {
             jumping = true;
-            
         }
+
+        playerAnimations.isJumping = jumping;
     }
 
     private void FixedUpdate()
