@@ -42,12 +42,12 @@ public class PlayerAnimations : MonoBehaviour
         //rotate mouse aim
         if (gun.targetPosition.position.x > transform.position.x)
         {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 90, transform.rotation.z);
         }
 
         else
         {
-            transform.rotation = Quaternion.Euler(0, -90, 0);
+            transform.rotation = Quaternion.Euler(transform.rotation.x, -90, transform.rotation.z);
         }
 
         //jumping

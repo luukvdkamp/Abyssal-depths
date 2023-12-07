@@ -25,6 +25,7 @@ public class MovementPlayer : MonoBehaviour
 
     [Header("Player Animation")]
     public PlayerAnimations playerAnimations;
+    public GameObject playerModel;
 
 
 
@@ -70,6 +71,21 @@ public class MovementPlayer : MonoBehaviour
         }
 
         playerAnimations.isJumping = jumping;
+
+
+        // Define the layer mask to include only the "Ground" layer
+        int groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
+
+        // Cast a ray downward to detect the slope angle, using the groundLayerMask
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1, groundLayerMask))
+        {
+            print("a");
+            // Your existing code to calculate slope angle and rotate the player
+            float slopeAngle = Vector3.Angle(hit.normal, Vector3.up) * Mathf.Sign(hit.normal.x);
+            //float clampedRotation = Mathf.Clamp(slopeAngle, -45, 45);
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, -slopeAngle);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
     }
 
     private void FixedUpdate()
