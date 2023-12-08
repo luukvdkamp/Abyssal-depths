@@ -14,7 +14,7 @@ public class HealthLight : MonoBehaviour
     {
         if(Vector3.Distance(player.transform.position, transform.position) < healingRange)
         {
-            healthSlider.value += healthGainSpeed;
+            healthSlider.value += healthGainSpeed * Time.deltaTime;
         }
     }
 }

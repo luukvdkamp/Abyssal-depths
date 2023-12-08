@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
 
         if(fallingTime > minFallingTime)
         {
-            healthSlider.value -= fallingTime;
+            healthSlider.value -= fallingTime * Time.deltaTime;
             fallingTime = 0;
             fallingSound.Stop();
             landingSound.Play();

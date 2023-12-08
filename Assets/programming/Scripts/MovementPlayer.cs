@@ -41,12 +41,12 @@ public class MovementPlayer : MonoBehaviour
 
         if(isGrounded)
         {
-            transform.Translate(transform.right * speedCount * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * speedCount * speed * Time.deltaTime);
         }
 
         else
         {
-            playerRigidbody.AddForce(transform.right * speedCount * airSpeed * Time.deltaTime, ForceMode.Impulse);
+            playerRigidbody.AddForce(Vector3.right * speedCount * airSpeed * Time.deltaTime, ForceMode.Impulse);
         }
 
         //gravity
