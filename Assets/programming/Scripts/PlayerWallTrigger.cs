@@ -9,14 +9,20 @@ public class PlayerWallTrigger : MonoBehaviour
 
     public WallJumping wallJumping;
     public MovementPlayer movementPlayer;
+    public Rigidbody playerRigidbody;
 
     private float collidersInTrigger;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Ground" && movementPlayer.isGrounded == false)
+        if(other.gameObject.tag == "Wall")
         {
             wallJumping.onWall = true;
+
+            if(collidersInTrigger == 0)
+            {
+                playerRigidbody.velocity = new Vector3(0, 0, 0);
+            }
 
             collidersInTrigger++;
 
@@ -36,16 +42,21 @@ public class PlayerWallTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        collidersInTrigger--;
 
-        if (other.gameObject.tag == "Ground" && collidersInTrigger == 0)
+        if (other.gameObject.tag == "Wall")
         {
-            wallJumping.onWall = false;
+            collidersInTrigger--;
 
-            wallJumping.onLeftWall = false;
-            wallJumping.onRightWall = false;
+            if(collidersInTrigger == 0)
+            {
+                wallJumping.onWall = false;
 
-            wallJumping.slideSpeed = 0;
+                wallJumping.onLeftWall = false;
+                wallJumping.onRightWall = false;
+
+                wallJumping.slideSpeed = 0;
+            }
+            
             
         }
     }

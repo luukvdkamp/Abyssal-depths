@@ -24,6 +24,7 @@ public class WallJumping : MonoBehaviour
     {
         if(onWall)
         {
+            print("walll");
             transform.Translate(Vector3.down * slideSpeed * Time.deltaTime);
 
             slideSpeed += speedIncrease;
