@@ -83,14 +83,14 @@ public class MovementPlayer : MonoBehaviour
             //float clampedRotation = Mathf.Clamp(slopeAngle, -45, 45);
 
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, -slopeAngle);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 3);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 7);
         }
 
         else
         {
             Vector3 targetEulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
             Quaternion targetRotation = Quaternion.Euler(targetEulerAngles);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 3);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 7);
         }
     }
 
@@ -102,7 +102,7 @@ public class MovementPlayer : MonoBehaviour
             print("jump");
 
             jumpResetCounter = 0;
-            playerRigidbody.AddForce(transform.up * jumpSpeed * Time.deltaTime);
+            playerRigidbody.AddForce(Vector3.up * jumpSpeed * Time.deltaTime);
 
             if (speedCount == 1)
             {

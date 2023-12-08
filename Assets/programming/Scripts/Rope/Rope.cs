@@ -21,7 +21,7 @@ public class Rope : MonoBehaviour
     public float maxResetJump;
     public float verticalMovement;
 
-    
+    public PlayerAnimations playerAnimations;
 
     private void Update()
     {
@@ -45,6 +45,8 @@ public class Rope : MonoBehaviour
 
         if (onRope)
         {
+            playerAnimations.onRope = true;
+
             player.GetComponent<MovementPlayer>().enabled = false;
 
             float horizontalMovement = Input.GetAxisRaw("Horizontal");
@@ -55,12 +57,17 @@ public class Rope : MonoBehaviour
                 //right
                 player.transform.position = new Vector3(rightPosition.position.x, player.transform.position.y, player.transform.position.z);
 
+                playerAnimations.onRight = true;
+                playerAnimations.onLeft = false;
+
                 if(Input.GetKeyDown(KeyCode.Space))
                 {
                     resetJump = true;
                     player.GetComponent<Rigidbody>().AddForce(transform.right * sideSpeed * Time.deltaTime);
                     player.GetComponent<Rigidbody>().AddForce(transform.up * upJumpSpeed * Time.deltaTime);
-
+                    playerAnimations.onRope = false;
+                    playerAnimations.ropeUp = false;
+                    playerAnimations.ropeDown = false;
                 }
             }
 
@@ -69,12 +76,17 @@ public class Rope : MonoBehaviour
                 //left
                 player.transform.position = new Vector3(leftPosition.position.x, player.transform.position.y, player.transform.position.z);
 
+                playerAnimations.onRight = false;
+                playerAnimations.onLeft = true;
+
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     resetJump = true;
                     player.GetComponent<Rigidbody>().AddForce(-transform.right * sideSpeed * Time.deltaTime);
                     player.GetComponent<Rigidbody>().AddForce(transform.up * upJumpSpeed * Time.deltaTime);
-
+                    playerAnimations.onRope = false;
+                    playerAnimations.ropeUp = false;
+                    playerAnimations.ropeDown = false;
                 }
             }
 
@@ -82,6 +94,9 @@ public class Rope : MonoBehaviour
             {
                 //middle
                 player.transform.position = new Vector3(transform.position.x, player.transform.position.y, player.transform.position.z);
+
+                playerAnimations.onRight = false;
+                playerAnimations.onLeft = false;
 
             }
 
@@ -92,20 +107,37 @@ public class Rope : MonoBehaviour
             {
                 //up
                 player.transform.Translate(transform.up * verticalSpeed * Time.deltaTime);
+
+                playerAnimations.ropeUp = true;
+                playerAnimations.ropeDown = false;
             }
 
             else if(verticalMovement < -0.2f)
             {
                 //down
                 player.transform.Translate(-transform.up * verticalSpeed * Time.deltaTime);
+
+                playerAnimations.ropeUp = false;
+                playerAnimations.ropeDown = true;
+            }
+
+            else if(verticalMovement == 0)
+            {
+                playerAnimations.ropeUp = false;
+                playerAnimations.ropeDown = false;
             }
 
             //if player slide off rope
             if(player.transform.position.y < endOfRopeDownPosition.position.y && verticalMovement < -0.2f)
             {
                 resetJump = true;
+                playerAnimations.onRope = false;
+                playerAnimations.ropeUp = false;
+                playerAnimations.ropeDown = false;
             }
         }
+
+        
 
         //making sure the player does not activate trigger after jumping off rope
         if(resetJump)
