@@ -14,12 +14,12 @@ public class PlayerAnimations : MonoBehaviour
 
     public Animator animator;
 
-    //jumping
+    [Header("Jumping")]
     public bool isJumping;
     private float landingDelayCount;
     public float landingDelayDuration;
 
-    //rope climbing
+    [Header("Rope climbing")]
     public bool onRight;
     public bool onLeft;
 
@@ -28,7 +28,7 @@ public class PlayerAnimations : MonoBehaviour
     public bool ropeUp;
     public bool ropeDown;
 
-    //health
+    [Header("Health")]
     public bool gameOver;
     public bool damagePlayer;
 
@@ -189,6 +189,7 @@ public class PlayerAnimations : MonoBehaviour
         else if(gameOver)
         {
             animator.SetBool("GameOver", true);
+            gameOver = false;
         }
 
 
@@ -199,5 +200,6 @@ public class PlayerAnimations : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         animator.SetBool("Damage", false);
+        damagePlayer = false;
     }
 }

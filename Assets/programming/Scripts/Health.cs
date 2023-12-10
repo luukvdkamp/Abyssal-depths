@@ -38,14 +38,17 @@ public class Health : MonoBehaviour
     void GettingDamage()
     {
         //if damage
-        if(damage != 0)
+        if(damage != 0 && playerAnimations.gameOver == false)
         {
             healthSlider.value -= damage;
 
             //if game over
             if(healthSlider.value == 0)
             {
+                movementPlayer.enabled = false;
                 playerAnimations.gameOver = true;
+
+                print("why");
             }
 
             else
