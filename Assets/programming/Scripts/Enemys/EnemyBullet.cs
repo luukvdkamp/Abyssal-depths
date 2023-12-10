@@ -39,7 +39,9 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Health>().healthSlider.value -= bulletDamage;
+            other.gameObject.GetComponent<Health>().gotHit = true;
+            other.gameObject.GetComponent<Health>().damage = bulletDamage;
+
             Destroy(gameObject);
         }
 

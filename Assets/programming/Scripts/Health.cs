@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    public Slider healthSlider; //health bar
     public MovementPlayer movementPlayer;
-    public Slider healthSlider;
-    public AudioSource fallingSound;
-    public AudioSource landingSound;
+    public PlayerAnimations playerAnimations;
 
+    public bool gotHit;
+    public float damage;
+
+    //fall damage
     public float minFallingTime;
     private float fallingTime;
-
     public float velocityY;
+
+    [Header("UX")]
+    public AudioSource fallingSound;
+    public AudioSource landingSound;
 
     // Start is called before the first frame update
     void Start()
@@ -24,30 +30,58 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //fall damage
+        FallDamage();
+        GettingDamage();
+        
+    }
+
+    void GettingDamage()
+    {
+        //if damage
+        if(damage != 0)
+        {
+            healthSlider.value -= damage;
+
+            //if game over
+            if(healthSlider.value == 0)
+            {
+                playerAnimations.gameOver = true;
+            }
+
+            else
+            {
+                playerAnimations.damagePlayer = true;
+            }
+
+            damage = 0;
+        }
+    }
+
+    void FallDamage()
+    {
         velocityY = GetComponent<Rigidbody>().velocity.y;
         if (GetComponent<Rigidbody>().velocity.y < 0 && GetComponent<Rigidbody>().useGravity && movementPlayer.isGrounded == false)
         {
             fallingTime += Time.deltaTime;
-            if(fallingSound.isPlaying == false)
+            if (fallingSound.isPlaying == false)
             {
                 fallingSound.Play();
             }
-            
+
         }
+
         else
         {
             fallingTime = 0;
             fallingSound.Stop();
         }
 
-        if(fallingTime > minFallingTime)
+        if (fallingTime > minFallingTime)
         {
             healthSlider.value -= fallingTime;
             fallingTime = 0;
             fallingSound.Stop();
             landingSound.Play();
         }
-        
     }
 }

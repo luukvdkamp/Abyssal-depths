@@ -14,12 +14,12 @@ public class PlayerAnimations : MonoBehaviour
 
     public Animator animator;
 
+    //jumping
     public bool isJumping;
-    private bool ableToLand;
-
     private float landingDelayCount;
     public float landingDelayDuration;
 
+    //rope climbing
     public bool onRight;
     public bool onLeft;
 
@@ -27,6 +27,10 @@ public class PlayerAnimations : MonoBehaviour
 
     public bool ropeUp;
     public bool ropeDown;
+
+    //health
+    public bool gameOver;
+    public bool damagePlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -37,19 +41,11 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //walking
-        float walkSpeed = Input.GetAxis("Horizontal");
-        if (walkSpeed != 0 && movementPlayer.isGrounded)
-        {
-            animator.SetBool("Walking", true);
-        }
-
-        else
-        {
-            animator.SetBool("Walking", false);
-        }
-
-
+        Walking();
+        Jumping();
+        RopeClimbing();
+        HealthPlayer();
+        
         // Rotate mouse aim
         if (gun.targetPosition.position.x > transform.position.x && onRope == false)
         {
@@ -62,6 +58,30 @@ public class PlayerAnimations : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, -90, 0);
         }
 
+   
+        //bow aiming
+        float angle = gun.angle;
+        animator.SetFloat("AimAngle", angle);
+
+    }
+
+    void Walking()
+    {
+        //walking
+        float walkSpeed = Input.GetAxis("Horizontal");
+        if (walkSpeed != 0 && movementPlayer.isGrounded)
+        {
+            animator.SetBool("Walking", true);
+        }
+
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
+    }
+
+    void Jumping()
+    {
         //jumping
         if (isJumping)
         {
@@ -95,17 +115,16 @@ public class PlayerAnimations : MonoBehaviour
         {
             animator.SetBool("Jumping", false);
         }
+    }
 
-
-
-        //bow aiming
-        float angle = gun.angle;
-        animator.SetFloat("AimAngle", angle);
-
+    void RopeClimbing()
+    {
         //rope
-        if(onRope)
+        if (onRope)
         {
             animator.SetBool("OnRope", true);
+
+            //HORIZONTAL
             if (onRight)
             {
                 transform.localRotation = Quaternion.Euler(0, -90, 0);
@@ -117,7 +136,16 @@ public class PlayerAnimations : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 90, 0);
             }
 
-            if(ropeUp)
+            else if (onRight == false && onLeft == false)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
+
+
+
+
+            //VERTICAL
+            if (ropeUp)
             {
                 animator.SetBool("ropeUp", true);
                 animator.SetBool("ropeDown", false);
@@ -125,7 +153,7 @@ public class PlayerAnimations : MonoBehaviour
                 animator.speed = 1;
             }
 
-            else if(ropeDown)
+            else if (ropeDown)
             {
                 animator.SetBool("ropeDown", true);
                 animator.SetBool("ropeUp", false);
@@ -133,7 +161,7 @@ public class PlayerAnimations : MonoBehaviour
                 animator.speed = 1;
             }
 
-            else if(ropeDown == false && ropeUp == false)
+            else if (ropeDown == false && ropeUp == false)
             {
                 animator.speed = 0;
             }
@@ -147,6 +175,29 @@ public class PlayerAnimations : MonoBehaviour
 
             animator.speed = 1;
         }
+    }
 
+    void HealthPlayer()
+    {
+        if(damagePlayer && gameOver == false)
+        {
+            animator.SetBool("Damage", true);
+
+            StartCoroutine(TurnOffDamageBoolAfterDelay(0.5f));
+        }
+
+        else if(gameOver)
+        {
+            animator.SetBool("GameOver", true);
+        }
+
+
+    }
+
+    private IEnumerator TurnOffDamageBoolAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        animator.SetBool("Damage", false);
     }
 }
