@@ -23,6 +23,7 @@ public class MovementPlayer : MonoBehaviour
     public float gravity;
     public float gravityMultiplier;
 
+
     [Header("Player Animation")]
     public PlayerAnimations playerAnimations;
     public GameObject playerModel;
@@ -92,6 +93,8 @@ public class MovementPlayer : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(targetEulerAngles);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 7);
         }
+
+        
     }
 
     private void FixedUpdate()

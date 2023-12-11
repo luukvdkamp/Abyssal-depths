@@ -9,7 +9,13 @@ public class PlayerIsGroundedCheck : MonoBehaviour
 
     public void Update()
     {
-        objectsInTrigger = Mathf.Clamp(objectsInTrigger, 0, 2);    
+        
+
+        if (objectsInTrigger == 0)
+        {
+            movementPlayer.isGrounded = false;
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,12 +47,6 @@ public class PlayerIsGroundedCheck : MonoBehaviour
         if(other.gameObject.tag == "Ground")
         {
             objectsInTrigger--;
-
-            if (objectsInTrigger == 0)
-            {
-                movementPlayer.isGrounded = false;
-
-            }
         }
     }
 }
