@@ -11,7 +11,7 @@ public class PlayerWallTrigger : MonoBehaviour
     public MovementPlayer movementPlayer;
     public Rigidbody playerRigidbody;
 
-    private float collidersInTrigger;
+    public float collidersInTrigger;
 
     private void OnTriggerEnter(Collider other)
     {

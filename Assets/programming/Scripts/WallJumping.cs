@@ -25,7 +25,7 @@ public class WallJumping : MonoBehaviour
     {
         if(onWall)
         {
-            print("walll");
+            
             transform.Translate(Vector3.down * slideSpeed * Time.deltaTime);
 
             slideSpeed += speedIncrease;
@@ -41,8 +41,8 @@ public class WallJumping : MonoBehaviour
 
     void WallJump()
     {
-  
 
+        playerAnimations.wallJump = true;
         if (onLeftWall)
         {
             //onLeftWall
@@ -67,7 +67,5 @@ public class WallJumping : MonoBehaviour
             slideSpeed = 0;
         }
 
-
-        playerAnimations.wallJump = true;
     }
 }

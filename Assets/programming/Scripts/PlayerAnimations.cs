@@ -49,9 +49,9 @@ public class PlayerAnimations : MonoBehaviour
         Jumping();
         RopeClimbing();
         HealthPlayer();
-        
+
         // Rotate mouse aim
-        if (gun.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false)
+        if (gun.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false && wallJump == false)
         {
             // Keep the existing X and Z rotation, only modify Y-axis rotation
             transform.localRotation = Quaternion.Euler(0, 90, 0);
@@ -171,7 +171,7 @@ public class PlayerAnimations : MonoBehaviour
             }
         }
 
-        else
+        else if(wallJumping.onWall == false)
         {
             animator.SetBool("OnRope", false);
             animator.SetBool("ropeUp", false);
@@ -211,36 +211,43 @@ public class PlayerAnimations : MonoBehaviour
     {
         if(wallJumping.onWall)
         {
+            print("onWall");
             animator.SetBool("onWall", true);
             animator.speed = 0;
 
             if (wallJumping.onLeftWall)
             {
                 transform.localRotation = Quaternion.Euler(0, -90, 0);
+                print("left");
             }
 
             else if(wallJumping.onRightWall)
             {
                 transform.localRotation = Quaternion.Euler(0, 90, 0);
+                print("right");
             }
 
             
 
         }
 
-        else
+        else if(wallJump == false)
         {
             animator.SetBool("onWall", false);
-            animator.speed = 1;
         }
 
         if(wallJump)
         {
-            animator.SetBool("wallJumping", true);
-            animator.SetBool("onWall", false);
-
-            animator.speed = 1;
+            StartCoroutine(LetJumpAnimationPlay(0.5f));
+            print("jump");
         }
-        
+
+    }
+    private IEnumerator LetJumpAnimationPlay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        animator.SetBool("onWall", false);
+        wallJump = false;
     }
 }

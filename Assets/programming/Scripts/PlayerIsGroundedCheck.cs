@@ -20,7 +20,6 @@ public class PlayerIsGroundedCheck : MonoBehaviour
             if(objectsInTrigger == 0)
             {
                 movementPlayer.playerRigidbody.velocity = new Vector3(0, 0, 0);
-                print("RESET");
                 
             }
 

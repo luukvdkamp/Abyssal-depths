@@ -99,7 +99,6 @@ public class MovementPlayer : MonoBehaviour
         
         if(jumping)
         {
-            print("jump");
 
             jumpResetCounter = 0;
             playerRigidbody.AddForce(Vector3.up * jumpSpeed * Time.deltaTime);
