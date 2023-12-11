@@ -32,6 +32,9 @@ public class PlayerAnimations : MonoBehaviour
     public bool gameOver;
     public bool damagePlayer;
 
+    [Header("wallJumping")]
+    public bool wallJump;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +44,14 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        WallSlidingAndJumping();
         Walking();
         Jumping();
         RopeClimbing();
         HealthPlayer();
         
         // Rotate mouse aim
-        if (gun.targetPosition.position.x > transform.position.x && onRope == false)
+        if (gun.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false)
         {
             // Keep the existing X and Z rotation, only modify Y-axis rotation
             transform.localRotation = Quaternion.Euler(0, 90, 0);
@@ -201,5 +205,42 @@ public class PlayerAnimations : MonoBehaviour
 
         animator.SetBool("Damage", false);
         damagePlayer = false;
+    }
+
+    void WallSlidingAndJumping()
+    {
+        if(wallJumping.onWall)
+        {
+            animator.SetBool("onWall", true);
+            animator.speed = 0;
+
+            if (wallJumping.onLeftWall)
+            {
+                transform.localRotation = Quaternion.Euler(0, -90, 0);
+            }
+
+            else if(wallJumping.onRightWall)
+            {
+                transform.localRotation = Quaternion.Euler(0, 90, 0);
+            }
+
+            
+
+        }
+
+        else
+        {
+            animator.SetBool("onWall", false);
+            animator.speed = 1;
+        }
+
+        if(wallJump)
+        {
+            animator.SetBool("wallJumping", true);
+            animator.SetBool("onWall", false);
+
+            animator.speed = 1;
+        }
+        
     }
 }

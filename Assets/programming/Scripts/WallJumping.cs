@@ -5,6 +5,7 @@ using UnityEngine;
 public class WallJumping : MonoBehaviour
 {
     public Rigidbody playerRigidbody;
+    public PlayerAnimations playerAnimations;
 
     public float maxSlideSpeed;
     public float speedIncrease;
@@ -40,6 +41,8 @@ public class WallJumping : MonoBehaviour
 
     void WallJump()
     {
+  
+
         if (onLeftWall)
         {
             //onLeftWall
@@ -63,5 +66,8 @@ public class WallJumping : MonoBehaviour
 
             slideSpeed = 0;
         }
+
+
+        playerAnimations.wallJump = true;
     }
 }
