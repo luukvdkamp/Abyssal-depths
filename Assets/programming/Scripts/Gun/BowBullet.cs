@@ -33,7 +33,7 @@ public class BowBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
         }
