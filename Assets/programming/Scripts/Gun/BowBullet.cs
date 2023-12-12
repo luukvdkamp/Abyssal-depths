@@ -13,18 +13,22 @@ public class BowBullet : MonoBehaviour
     public float lifeTime;
     private float amountofGravity;
     public float gravityStrength;
+    private bool stuckInGround;
 
 
     private void Update()
     {
-        float bulletSpeed = chargeTime * speed * lowerForce;
+        if(stuckInGround == false)
+        {
+            float bulletSpeed = chargeTime * speed * lowerForce;
 
-        GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+            GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
 
-        GetComponent<Rigidbody>().AddForce(Vector3.down * amountofGravity * Time.deltaTime);
+            GetComponent<Rigidbody>().AddForce(Vector3.down * amountofGravity * Time.deltaTime);
 
-        lowerForce -= Time.deltaTime;
-        amountofGravity += Time.deltaTime * gravityStrength;
+            lowerForce -= Time.deltaTime;
+            amountofGravity += Time.deltaTime * gravityStrength;
+        }
 
         Destroy(gameObject, lifeTime);
 
@@ -35,7 +39,9 @@ public class BowBullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Wall")
         {
-            Destroy(gameObject);
+            stuckInGround = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+            Destroy(gameObject, 1);
         }
 
         else if(collision.gameObject.tag == "Player")

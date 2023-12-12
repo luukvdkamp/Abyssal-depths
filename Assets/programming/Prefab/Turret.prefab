@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {fileID: 0}
+  angle: 0
 --- !u!1 &8234581052905291529
 GameObject:
   m_ObjectHideFlags: 0
