@@ -47,7 +47,6 @@ public class BowBullet : MonoBehaviour
         else if(collision.gameObject.tag == "Player")
         {
             Physics.IgnoreCollision(GetComponent<BoxCollider>(), collision.gameObject.GetComponent<Collider>());
-            Destroy(gameObject);
         }
 
         else if(collision.gameObject.tag == "Enemy")
