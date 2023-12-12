@@ -72,7 +72,7 @@ public class PlayerAnimations : MonoBehaviour
     void Walking()
     {
         //walking
-        float walkSpeed = Input.GetAxis("Horizontal");
+        float walkSpeed = Input.GetAxisRaw("Horizontal");
         if (walkSpeed != 0 && movementPlayer.isGrounded)
         {
             animator.SetBool("Walking", true);
