@@ -12,6 +12,7 @@ public class MovementPlayer : MonoBehaviour
 
     [Header("Speed values")]
     public float speed;
+    public float airSpeed;
 
     public float jumpSpeed;
     public float jumpSideSpeed;
@@ -42,6 +43,11 @@ public class MovementPlayer : MonoBehaviour
         if (isGrounded)
         {
             transform.Translate(Vector3.right * speedCount * speed * Time.deltaTime);
+        }
+
+        else
+        {
+            playerRigidbody.AddForce(Vector3.right * speedCount * airSpeed * Time.deltaTime, ForceMode.Impulse);
         }
 
         //gravity

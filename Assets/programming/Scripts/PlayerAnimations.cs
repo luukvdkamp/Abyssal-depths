@@ -13,6 +13,7 @@ public class PlayerAnimations : MonoBehaviour
     public Gun gun;
 
     public Animator animator;
+    public Transform playerForward;
 
     [Header("Jumping")]
     public bool isJumping;
@@ -75,13 +76,48 @@ public class PlayerAnimations : MonoBehaviour
         float walkSpeed = Input.GetAxisRaw("Horizontal");
         if (walkSpeed != 0 && movementPlayer.isGrounded)
         {
-            animator.SetBool("Walking", true);
+            animator.SetBool("isWalking", true);
+            if(walkSpeed > 0)
+            {
+                //right
+
+                if(transform.localRotation == Quaternion.Euler(0, 90, 0))
+                {
+                    //forward
+                    animator.SetFloat("walking", 1);
+                }
+
+                else if(transform.localRotation == Quaternion.Euler(0, -90, 0))
+                {
+                    //backwards
+                    animator.SetFloat("walking", -1);
+                }
+            }
+
+            else if (walkSpeed < 0)
+            {
+                //left
+
+                if (transform.localRotation == Quaternion.Euler(0, 90, 0))
+                {
+                    //forward
+                    animator.SetFloat("walking", -1);
+                }
+
+                else if (transform.localRotation == Quaternion.Euler(0, -90, 0))
+                {
+                    //backwards
+                    animator.SetFloat("walking", 1);
+                }
+            }
         }
 
         else
         {
-            animator.SetBool("Walking", false);
+            animator.SetBool("isWalking", false);
+            animator.SetFloat("walking", 0);
         }
+
     }
 
     void Jumping()
@@ -226,12 +262,9 @@ public class PlayerAnimations : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 90, 0);
                 print("right");
             }
-
-            
-
         }
 
-        else if(wallJump == false)
+        else
         {
             animator.SetBool("onWall", false);
         }
@@ -247,7 +280,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        animator.SetBool("onWall", false);
         wallJump = false;
     }
 }
