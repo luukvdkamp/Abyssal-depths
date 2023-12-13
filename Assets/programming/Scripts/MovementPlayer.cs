@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
-    private Vector3 movement;
     public Rigidbody playerRigidbody;
     public bool isGrounded;
     public float speedCount;

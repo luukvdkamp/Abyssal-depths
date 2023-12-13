@@ -19,6 +19,7 @@ public class PlayerWallTrigger : MonoBehaviour
         {
             wallJumping.onWall = true;
             playerRigidbody.useGravity = false;
+            movementPlayer.gravity = 0;
             movementPlayer.enabled = false;
 
             if(collidersInTrigger == 0)
@@ -48,6 +49,17 @@ public class PlayerWallTrigger : MonoBehaviour
         if (other.gameObject.tag == "Wall")
         {
             collidersInTrigger--;
+
+            if(collidersInTrigger == 0)
+            {
+                wallJumping.onWall = false;
+                playerRigidbody.useGravity = true;
+    
+                movementPlayer.enabled = true;
+
+                wallJumping.onRightWall = false;
+                wallJumping.onLeftWall = false;
+            }
             
         }
     }
