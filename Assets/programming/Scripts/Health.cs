@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     public Slider healthSlider; //health bar
     public MovementPlayer movementPlayer;
     public PlayerAnimations playerAnimations;
+    public GameOver gameOver;
 
     public bool gotHit;
     public float damage;
@@ -32,7 +33,13 @@ public class Health : MonoBehaviour
     {
         FallDamage();
         GettingDamage();
-        
+
+        if (healthSlider.value == 0)
+        {
+            movementPlayer.enabled = false;
+
+            gameOver.isGameOver = true;
+        }
     }
 
     void GettingDamage()
@@ -45,10 +52,8 @@ public class Health : MonoBehaviour
             //if game over
             if(healthSlider.value == 0)
             {
-                movementPlayer.enabled = false;
                 playerAnimations.gameOver = true;
 
-                print("why");
             }
 
             else
