@@ -6,6 +6,7 @@ public class WallJumping : MonoBehaviour
 {
     public Rigidbody playerRigidbody;
     public PlayerAnimations playerAnimations;
+    public MovementPlayer movementPlayer;
 
     public float maxSlideSpeed;
     public float speedIncrease;
@@ -21,22 +22,41 @@ public class WallJumping : MonoBehaviour
     public float slideSpeed = 0;
 
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if(onWall)
+        if (onWall)
         {
-            
+
             transform.Translate(Vector3.down * slideSpeed * Time.deltaTime);
 
             slideSpeed += speedIncrease;
 
-            if(Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 WallJump();
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+      
 
         slideSpeed = Mathf.Clamp(slideSpeed, 0, maxSlideSpeed);
+
+        if(movementPlayer.isGrounded == true)
+        {
+            onWall = false;
+
+            playerRigidbody.useGravity = true;
+
+            onLeftWall = false;
+            onRightWall = false;
+
+            slideSpeed = 0;
+
+            movementPlayer.enabled = true;
+        }
     }
 
     void WallJump()
@@ -51,8 +71,11 @@ public class WallJumping : MonoBehaviour
 
             onWall = false;
             onLeftWall = false;
+            playerRigidbody.useGravity = true;
 
             slideSpeed = 0;
+
+            movementPlayer.enabled = true;
         }
 
         else
@@ -63,8 +86,11 @@ public class WallJumping : MonoBehaviour
 
             onWall = false;
             onRightWall = false;
+            playerRigidbody.useGravity = true;
 
             slideSpeed = 0;
+
+            movementPlayer.enabled = true;
         }
 
     }
