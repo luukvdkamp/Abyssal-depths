@@ -87,6 +87,14 @@ public class Health : MonoBehaviour
         if (fallingTime > minFallingTime)
         {
             healthSlider.value -= fallingTime;
+
+            //if game over
+            if (healthSlider.value == 0)
+            {
+                playerAnimations.gameOver = true;
+
+            }
+
             fallingTime = 0;
             fallingSound.Stop();
             landingSound.Play();
