@@ -61,9 +61,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Landing
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: onWall
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7501668989181989702}
   m_Solo: 0
@@ -166,7 +163,7 @@ AnimatorStateMachine:
     m_Position: {x: 40, y: -200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4319952075219470142}
-    m_Position: {x: 690, y: 100, z: 0}
+    m_Position: {x: 700, y: 100, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3689971559701457189}
@@ -461,9 +458,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.1407721
+  m_TransitionDuration: 0.038323827
   m_TransitionOffset: 0
-  m_ExitTime: 0.25790972
+  m_ExitTime: 0.053615946
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -649,9 +646,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.037664935
+  m_TransitionDuration: 0.011629968
   m_TransitionOffset: 0
-  m_ExitTime: 0.13135594
+  m_ExitTime: 0.004494544
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -674,9 +671,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.15292576
+  m_TransitionDuration: 0.063157976
   m_TransitionOffset: 0
-  m_ExitTime: 0.21164027
+  m_ExitTime: 0.04591526
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -850,9 +847,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isWalking
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: onWall
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7501668989181989702}
   m_Solo: 0
@@ -936,9 +930,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: walking
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: onWall
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4319952075219470142}
   m_Solo: 0
@@ -1018,9 +1009,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: isWalking
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: onWall
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7501668989181989702}

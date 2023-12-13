@@ -84,14 +84,14 @@ public class MovementPlayer : MonoBehaviour
             //float clampedRotation = Mathf.Clamp(slopeAngle, -45, 45);
 
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, -slopeAngle);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 7);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 30);
         }
 
         else
         {
             Vector3 targetEulerAngles = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
             Quaternion targetRotation = Quaternion.Euler(targetEulerAngles);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 7);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 30);
         }
 
         

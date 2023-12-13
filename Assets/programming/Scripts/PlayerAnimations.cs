@@ -249,7 +249,10 @@ public class PlayerAnimations : MonoBehaviour
         {
             print("onWall");
             animator.SetBool("onWall", true);
-            animator.speed = 0;
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("WallJump"))
+            {
+                animator.speed = 0;
+            }
 
             if (wallJumping.onLeftWall)
             {
