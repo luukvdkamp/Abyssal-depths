@@ -68,7 +68,7 @@ public class Health : MonoBehaviour
     void FallDamage()
     {
         velocityY = GetComponent<Rigidbody>().velocity.y;
-        if (GetComponent<Rigidbody>().velocity.y < 0 && GetComponent<Rigidbody>().useGravity && movementPlayer.isGrounded == false)
+        if (GetComponent<Rigidbody>().velocity.y < -7 && GetComponent<Rigidbody>().useGravity && movementPlayer.isGrounded == false)
         {
             fallingTime += Time.deltaTime;
             if (fallingSound.isPlaying == false)
