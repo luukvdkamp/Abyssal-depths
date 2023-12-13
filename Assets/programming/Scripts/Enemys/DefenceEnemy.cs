@@ -54,7 +54,7 @@ public class DefenceEnemy : MonoBehaviour
             //movement
             if(movingRight)
             {
-                transform.Translate(Vector3.right * idleSpeed * Time.deltaTime);
+                transform.Translate(Vector3.right * idleSpeed * Time.deltaTime, Space.World);
                 transform.localRotation = Quaternion.Euler(0, 90, 0);
                 if (Vector3.Distance(maxRightDistance.position, transform.position) < 1)
                 {
@@ -65,7 +65,7 @@ public class DefenceEnemy : MonoBehaviour
 
             else if(movingLeft)
             {
-                transform.Translate(-Vector3.right * idleSpeed * Time.deltaTime);
+                transform.Translate(-Vector3.right * idleSpeed * Time.deltaTime, Space.World);
                 transform.localRotation = Quaternion.Euler(0, -90, 0);
                 if (Vector3.Distance(maxLeftDistance.position, transform.position) < 1)
                 {
@@ -95,14 +95,14 @@ public class DefenceEnemy : MonoBehaviour
             {
                 if (player.transform.position.x > transform.position.x)
                 {
-                    transform.Translate(Vector3.right * attackSpeed * Time.deltaTime);
+                    transform.Translate(Vector3.right * attackSpeed * Time.deltaTime, Space.World);
                     transform.localRotation = Quaternion.Euler(0, 90, 0);
                     movingRight = true;
                 }
 
                 else if (player.transform.position.x < transform.position.x)
                 {
-                    transform.Translate(-Vector3.right * attackSpeed * Time.deltaTime);
+                    transform.Translate(-Vector3.right * attackSpeed * Time.deltaTime, Space.World);
                     transform.localRotation = Quaternion.Euler(0, -90, 0);
                     movingLeft = true;
                 }
