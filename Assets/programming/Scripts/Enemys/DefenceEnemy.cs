@@ -24,6 +24,11 @@ public class DefenceEnemy : MonoBehaviour
     public int amountOfIdleTurns;
     private int amountOfTurnCount;
 
+    public float bulletResetTime;
+    private float bulletResetCounter;
+    public GameObject bulletPrefab;
+    public Transform barrel;
+
     [Header("states")]
     public bool idleState;
     public bool attackState;
@@ -93,14 +98,14 @@ public class DefenceEnemy : MonoBehaviour
             //movement
             if(Vector3.Distance(player.transform.position, transform.position) > distanceFromPlayer)
             {
-                if (player.transform.position.x > transform.position.x)
+                if (player.transform.position.x > transform.position.x && transform.position.x < maxRightDistance.position.x)
                 {
                     transform.Translate(Vector3.right * attackSpeed * Time.deltaTime, Space.World);
                     transform.localRotation = Quaternion.Euler(0, 90, 0);
                     movingRight = true;
                 }
 
-                else if (player.transform.position.x < transform.position.x)
+                else if (player.transform.position.x < transform.position.x && transform.position.x > maxLeftDistance.position.x)
                 {
                     transform.Translate(-Vector3.right * attackSpeed * Time.deltaTime, Space.World);
                     transform.localRotation = Quaternion.Euler(0, -90, 0);
@@ -112,6 +117,18 @@ public class DefenceEnemy : MonoBehaviour
             {
                 attackState = false;
                 searchState = true;
+            }
+
+            //schooting
+            bulletResetCounter += Time.deltaTime;
+            if(bulletResetCounter > bulletResetTime)
+            {
+                bulletResetCounter = 0;
+                GameObject prefab = Instantiate(bulletPrefab, barrel.position, barrel.rotation);
+                barrel.LookAt(player.transform.position);
+                prefab.GetComponent<EnemyBullet>().bulletSpeed = 17;
+                prefab.GetComponent<EnemyBullet>().barrelRotation = barrel;
+                prefab.GetComponent<EnemyBullet>().enemyThatShotBullet = transform;
             }
         }
 
