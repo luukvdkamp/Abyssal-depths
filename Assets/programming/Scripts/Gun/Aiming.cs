@@ -8,8 +8,14 @@ public class Aiming : MonoBehaviour
 
     void Update()
     {
+        int rayLayer = LayerMask.NameToLayer("RayLayer");
+
         Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit raycastHit))
+
+      
+        int layerMask = 1 << rayLayer;
+
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, layerMask))
         {
             transform.position = raycastHit.point;
         }
