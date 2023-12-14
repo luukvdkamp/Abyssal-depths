@@ -154,6 +154,14 @@ public class DefenceEnemy : MonoBehaviour
                     movingRight = true;
                 }
             }
+
+            if(playerInVision)
+            {
+                idleTurnCount = 0;
+                amountOfTurnCount = 0;
+                searchState = false;
+                attackState = true;
+            }
             
             if(amountOfTurnCount == amountOfIdleTurns)
             {
