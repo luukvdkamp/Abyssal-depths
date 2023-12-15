@@ -29,6 +29,9 @@ public class DefenceEnemy : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform barrel;
 
+
+    public Animator animator;
+
     [Header("states")]
     public bool idleState;
     public bool attackState;
@@ -91,6 +94,10 @@ public class DefenceEnemy : MonoBehaviour
                     }
                 }
             }
+
+
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isSearching", false);
         }
 
         else if(attackState)
@@ -130,6 +137,11 @@ public class DefenceEnemy : MonoBehaviour
                 prefab.GetComponent<EnemyBullet>().barrelRotation = barrel;
                 prefab.GetComponent<EnemyBullet>().enemyThatShotBullet = transform;
             }
+
+
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isSearching", false);
+            animator.SetBool("isAttacking", true);
         }
 
         else if(searchState)
@@ -169,6 +181,9 @@ public class DefenceEnemy : MonoBehaviour
                 idleState = true;
                 amountOfTurnCount = 0;
             }
+
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isSearching", true);
         }
     }
 }
