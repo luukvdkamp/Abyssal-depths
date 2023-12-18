@@ -47,7 +47,7 @@ public class EnemyBullet : MonoBehaviour
 
         else if(other.gameObject.tag == "Enemy")
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<EnemyHealth>().health -= bulletDamage;
             Destroy(gameObject);
         }
 

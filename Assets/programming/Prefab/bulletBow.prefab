@@ -390,6 +390,7 @@ MonoBehaviour:
   chargeTime: 0
   lifeTime: 3
   gravityStrength: 100000
+  damage: 1
 --- !u!1001 &448651048137670479
 PrefabInstance:
   m_ObjectHideFlags: 0

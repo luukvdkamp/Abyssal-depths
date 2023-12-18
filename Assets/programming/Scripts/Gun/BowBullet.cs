@@ -14,6 +14,7 @@ public class BowBullet : MonoBehaviour
     private float amountofGravity;
     public float gravityStrength;
     private bool stuckInGround;
+    public float damage;
 
 
     private void Update()
@@ -51,7 +52,7 @@ public class BowBullet : MonoBehaviour
 
         else if(collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyHealth>().health -= damage;
             Destroy(gameObject);
         }
     }
