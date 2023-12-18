@@ -5,9 +5,27 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health;
+    public SoundManager soundManager;
+
+    private float previousValue;
+
+    private void Start()
+    {
+       
+        previousValue = health;
+    }
+
     void Update()
     {
-        if(health <= 0)
+        
+        if (health != previousValue)
+        {
+            soundManager.gotHit = true;
+
+            previousValue = health;
+        }
+
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
