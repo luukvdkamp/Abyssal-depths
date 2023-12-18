@@ -83,7 +83,6 @@ GameObject:
   - component: {fileID: 2906093927304085224}
   - component: {fileID: 6082773029257150525}
   - component: {fileID: 1640386417865570447}
-  - component: {fileID: 4822899052106258315}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -157,24 +156,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4822899052106258315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187568305577577523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbf0d8777b7663244a8a9d39308024ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barrel: {fileID: 8199928128204430925}
-  bulletPrefab: {fileID: 9102819637838980277, guid: 8335ce2184ba6864783e037299b448ae,
-    type: 3}
-  chargeTime: 0
-  maxChargeTime: 4
-  minimumChargeTime: 0
 --- !u!1 &2131625067532996917
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 4011209982585509921}
   playerAnimations: {fileID: 0}
+  movementPlayer: {fileID: 0}
   maxSlideSpeed: 100
   speedIncrease: 0.4
   wallJumpingUpSpeed: 40000
@@ -382,6 +364,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   movementPlayer: {fileID: 8880200181901100171}
   playerAnimations: {fileID: 0}
+  gameOver: {fileID: 0}
   gotHit: 0
   damage: 0
   minFallingTime: 0
@@ -1306,9 +1289,10 @@ MonoBehaviour:
   movementPlayer: {fileID: 8880200181901100171}
   wallJumping: {fileID: 1034475215256865702}
   health: {fileID: -3489633839185521349}
-  bow: {fileID: 4822899052106258315}
+  bow: {fileID: 0}
   gun: {fileID: 0}
   animator: {fileID: 41151157079484802}
+  playerForward: {fileID: 0}
   isJumping: 0
   landingDelayDuration: 0
   onRight: 0

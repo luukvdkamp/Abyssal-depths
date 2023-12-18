@@ -13,6 +13,8 @@ public class Turret : MonoBehaviour
     public GameObject bullet;
     public Transform barrel;
 
+    public AudioSource gunShot;
+
     private void Update()
     {
         // Calculate the direction from barrel to player
@@ -36,6 +38,8 @@ public class Turret : MonoBehaviour
                 prefab.GetComponent<EnemyBullet>().barrelRotation = barrel;
                 prefab.GetComponent<EnemyBullet>().enemyThatShotBullet = transform;
                 fireCount = 0;
+
+                gunShot.Play();
             }
         }
         else

@@ -15,6 +15,8 @@ public class Parry : MonoBehaviour
     public float maxParryCooldown;
     private float parryCooldownCount;
 
+    public AudioSource parry;
+
 
     private void Update()
     {
@@ -22,6 +24,7 @@ public class Parry : MonoBehaviour
         {
             knife.SetActive(true);
             gun.SetActive(false);
+            parry.Play();
 
             resetParry = true;
         }
