@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: orbincube
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1cfb41b38e762534a99ccdc85b9d7d96,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1029684698628430131, guid: 1cfb41b38e762534a99ccdc85b9d7d96,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
