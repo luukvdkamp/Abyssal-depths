@@ -6,7 +6,7 @@ using TMPro;
 
 public class ResolutionUI : MonoBehaviour
 {
-    private TMP_Dropdown resolutionDropDown;
+    [SerializeField] private TMP_Dropdown resolutionDropDown;
 
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
