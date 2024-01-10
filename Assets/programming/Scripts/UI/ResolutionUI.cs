@@ -22,20 +22,20 @@ public class ResolutionUI : MonoBehaviour
         resolutionDropDown.ClearOptions();
         currentRefreshRate = Screen.currentResolution.refreshRate;
 
-        for(int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
         {
-            if(resolutions[i].refreshRate == currentRefreshRate)
+            if (resolutions[i].refreshRate == currentRefreshRate)
             {
                 filteredResolutions.Add(resolutions[i]);
             }
         }
 
         List<string> options = new List<string>();
-        for(int i = 0; i < filteredResolutions.Count; i++)
+        for (int i = 0; i < filteredResolutions.Count; i++)
         {
             string resolutionOption = filteredResolutions[i].width + "x" + filteredResolutions[i].height + "x" + filteredResolutions[i].refreshRate + "Hz";
             options.Add(resolutionOption);
-            if(filteredResolutions[i].width == Screen.width && filteredResolutions[i].height == Screen.height)
+            if (filteredResolutions[i].width == Screen.width && filteredResolutions[i].height == Screen.height)
             {
                 currentResolutionIndex = i;
             }
@@ -44,7 +44,6 @@ public class ResolutionUI : MonoBehaviour
         resolutionDropDown.AddOptions(options);
         resolutionDropDown.value = currentResolutionIndex;
         resolutionDropDown.RefreshShownValue();
-
     }
 
     public void SetResolution(int resolutionIndex)

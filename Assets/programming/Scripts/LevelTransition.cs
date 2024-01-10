@@ -7,20 +7,11 @@ public class LevelTransition : MonoBehaviour
 {
     public GameObject player;
     public GameObject cam;
+    public CameraPlayerPosition cinemachineCam;
 
     public Transform nextPlayerPosition;
     public Transform nextCameraPosition;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +19,7 @@ public class LevelTransition : MonoBehaviour
         {
             player.transform.position = nextPlayerPosition.position;
             cam.transform.position = nextCameraPosition.position;
+            cinemachineCam.currentLevelCam = nextCameraPosition;
         }
     }
 }
