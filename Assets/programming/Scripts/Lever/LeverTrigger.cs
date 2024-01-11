@@ -6,6 +6,7 @@ public class LeverTrigger : MonoBehaviour
 {
     public GameObject door;
     public Animator animator;
+    public AudioSource leverPull;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class LeverTrigger : MonoBehaviour
         {
             door.gameObject.SetActive(false);
             animator.SetBool("leverPulled", true);
+            leverPull.Play();
         }
     }
 }
