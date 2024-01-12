@@ -11,6 +11,7 @@ public class PlayerAnimations : MonoBehaviour
     public Health health;
     public Bow bow;
     public Gun gun;
+    public Crouching crouching;
 
     public Animator animator;
     public Transform playerForward;
@@ -36,6 +37,9 @@ public class PlayerAnimations : MonoBehaviour
     [Header("wallJumping")]
     public bool wallJump;
 
+    [Header("Crouching")]
+    public float crouchInput;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +54,7 @@ public class PlayerAnimations : MonoBehaviour
         Jumping();
         RopeClimbing();
         HealthPlayer();
+        Crouching();
 
         // Rotate mouse aim
         if (gun.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false && wallJump == false)
@@ -68,6 +73,21 @@ public class PlayerAnimations : MonoBehaviour
         float angle = gun.angle;
         animator.SetFloat("AimAngle", angle);
 
+    }
+
+    void Crouching()
+    {
+        crouchInput = Input.GetAxisRaw("Horizontal");
+
+        if(crouching.isCrouching)
+        {
+            animator.SetBool("Crouching", true);
+        }
+
+        else
+        {
+            animator.SetBool("Crouching", false);
+        }
     }
 
     void Walking()
@@ -207,7 +227,7 @@ public class PlayerAnimations : MonoBehaviour
             }
         }
 
-        else if(wallJumping.onWall == false)
+        else if(wallJumping.onWall == false && crouching.isCrouching == false)
         {
             animator.SetBool("OnRope", false);
             animator.SetBool("ropeUp", false);
