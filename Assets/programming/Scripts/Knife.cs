@@ -11,6 +11,8 @@ public class Knife : MonoBehaviour
     private float bulletLifetime;
     private float bulletDamage;
 
+    public AudioSource parry;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,6 +29,9 @@ public class Knife : MonoBehaviour
 
             bulletToParry.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             bulletToParry.transform.LookAt(enemy.transform.position);
+
+            //parry sound
+            parry.Play();
         }
     }
 

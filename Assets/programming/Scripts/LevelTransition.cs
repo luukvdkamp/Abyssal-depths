@@ -11,15 +11,88 @@ public class LevelTransition : MonoBehaviour
 
     public Transform nextPlayerPosition;
     public Transform nextCameraPosition;
- 
+
+    public Image blackBackground;
+    public float fadeDuration;
+    public float delayDuration = 1f;
+
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            player.transform.position = nextPlayerPosition.position;
-            cam.transform.position = nextCameraPosition.position;
-            cinemachineCam.currentLevelCam = nextCameraPosition;
+            StartCoroutine(FadeImage());
         }
+    }
+
+    IEnumerator FadeImage()
+    {
+        // Get the current alpha value of the image
+        float currentAlpha = blackBackground.color.a;
+
+        // Target alpha value (e.g., fully opaque)
+        float targetAlpha = 1f;
+
+        // Time elapsed
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            // Interpolate the alpha value smoothly
+            float newAlpha = Mathf.Lerp(currentAlpha, targetAlpha, elapsedTime / fadeDuration);
+
+            // Update the image's color with the new alpha value
+            blackBackground.color = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, newAlpha);
+
+            // Increment the elapsed time
+            elapsedTime += Time.deltaTime;
+
+            // Wait for the next frame
+            yield return null;
+        }
+
+        // Ensure the image is fully opaque
+        blackBackground.color = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, targetAlpha);
+
+        // Wait for the specified delay
+        yield return new WaitForSeconds(delayDuration);
+
+        // Start the fade-out process
+        StartCoroutine(FadeOutImage());
+
+        //change position player
+        player.transform.position = nextPlayerPosition.position;
+        cam.transform.position = nextCameraPosition.position;
+        cinemachineCam.currentLevelCam = nextCameraPosition;
+    }
+
+    IEnumerator FadeOutImage()
+    {
+        // Get the current alpha value of the image
+        float currentAlpha = blackBackground.color.a;
+
+        // Target alpha value (fully transparent)
+        float targetAlpha = 0f;
+
+        // Time elapsed
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            // Interpolate the alpha value smoothly
+            float newAlpha = Mathf.Lerp(currentAlpha, targetAlpha, elapsedTime / fadeDuration);
+
+            // Update the image's color with the new alpha value
+            blackBackground.color = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, newAlpha);
+
+            // Increment the elapsed time
+            elapsedTime += Time.deltaTime;
+
+            // Wait for the next frame
+            yield return null;
+        }
+
+        // Ensure the image is fully transparent
+        blackBackground.color = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, targetAlpha);
     }
 }
