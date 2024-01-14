@@ -82,6 +82,16 @@ public class PlayerAnimations : MonoBehaviour
         if(crouching.isCrouching)
         {
             animator.SetBool("Crouching", true);
+
+            if(crouchInput == 0)
+            {
+                animator.speed = 0;
+            }
+
+            else
+            {
+                animator.speed = 1;
+            }
         }
 
         else
