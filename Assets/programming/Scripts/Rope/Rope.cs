@@ -135,6 +135,13 @@ public class Rope : MonoBehaviour
                 playerAnimations.ropeUp = false;
                 playerAnimations.ropeDown = false;
             }
+
+            //if player is gameover
+            if(player.GetComponent<Health>().gameOver.isGameOver)
+            {
+                onRope = false;
+                resetJump = true; 
+            }
         }
 
         
