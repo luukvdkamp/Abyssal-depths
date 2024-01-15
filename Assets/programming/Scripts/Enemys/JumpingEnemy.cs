@@ -72,16 +72,16 @@ public class JumpingEnemy : MonoBehaviour
         yield return new WaitForSeconds(jumpDelay);
 
         // Continue with the rest of the code after the delay
-        GetComponent<Rigidbody>().AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(Vector3.up * jumpHeight * Time.deltaTime);
 
         if (goingRight)
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.right * jumpSideSpeed, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(Vector3.right * jumpSideSpeed * Time.deltaTime);
             print("jumpingSideways");
         }
         else if (goingLeft)
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.left * jumpSideSpeed, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(Vector3.left * jumpSideSpeed * Time.deltaTime);
             print("jumpingSideways");
         }
 
