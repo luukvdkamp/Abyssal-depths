@@ -8,7 +8,7 @@ public class ItemPickup : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            
         }
     }
 }
