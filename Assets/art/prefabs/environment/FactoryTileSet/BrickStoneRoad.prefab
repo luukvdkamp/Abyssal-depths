@@ -68,11 +68,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrickStoneRoad
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: aafe7ab960f1d87428d709d4c4613906,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

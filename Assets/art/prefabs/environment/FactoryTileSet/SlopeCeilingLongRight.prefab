@@ -68,11 +68,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlopeCeilingLongRight
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 82206ca3bfadce14a9ac1d14a6d1867a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

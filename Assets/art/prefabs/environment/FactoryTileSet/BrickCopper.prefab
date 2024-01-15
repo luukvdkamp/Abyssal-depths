@@ -68,11 +68,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrickCopper
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 87ae0446a7561c1488c7dd3b19e0bb71,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
