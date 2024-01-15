@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class HealthPickup : MonoBehaviour
 {
     public float hpGain;
-    public Slider playerHP;
+    public float widthGain;
+    public GameObject slider;
 
     private void OnTriggerStay(Collider other)
     {
@@ -14,7 +15,12 @@ public class HealthPickup : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
+                other.gameObject.GetComponent<Health>().healthSlider.maxValue += hpGain;
+                other.gameObject.GetComponent<Health>().healthSlider.value += hpGain;
+                RectTransform sliderRect = slider.GetComponent<RectTransform>();
+                sliderRect.sizeDelta = new Vector2(sliderRect.sizeDelta.x + widthGain, sliderRect.sizeDelta.y);
 
+                Destroy(gameObject);
             }
         }
     }
