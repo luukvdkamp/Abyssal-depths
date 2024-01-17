@@ -9,6 +9,9 @@ public class HealthPickup : MonoBehaviour
     public float widthGain;
     public GameObject slider;
 
+
+    public GameObject[] objecten;
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -23,5 +26,7 @@ public class HealthPickup : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+
     }
 }
