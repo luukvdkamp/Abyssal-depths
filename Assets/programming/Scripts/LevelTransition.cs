@@ -18,6 +18,18 @@ public class LevelTransition : MonoBehaviour
 
     private int i;
 
+    private void Update()
+    {
+        //devtool
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            //change position player
+            player.transform.position = nextPlayerPositions[i].position;
+            cam.transform.position = nextCameraPositions[i].position;
+            cinemachineCam.currentLevelCam = nextCameraPositions[i];
+            i++;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
