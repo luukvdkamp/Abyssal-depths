@@ -9,6 +9,10 @@ public class JumpingEnemy : MonoBehaviour
     public float jumpHeight;
     public float jumpSideSpeed;
 
+    public float damage;
+    private float damageCounter;
+    public float damageResetTime;
+
     public float jumpTime;
     private float jumpCounter;
 
@@ -56,6 +60,10 @@ public class JumpingEnemy : MonoBehaviour
 
             sideJumpCounter = 0;
         }
+
+
+        //damage reset
+        damageCounter += Time.deltaTime; 
     }
 
     void Jump()
@@ -87,5 +95,16 @@ public class JumpingEnemy : MonoBehaviour
 
         jumpCounter = 0;
         sideJumpCounter++;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player" && damageCounter > damageResetTime)
+        {
+            other.gameObject.GetComponent<Health>().gotHit = true;
+            other.gameObject.GetComponent<Health>().damage = damage;
+
+            damageCounter = 0;
+        }
     }
 }
