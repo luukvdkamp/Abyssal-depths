@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public MovementPlayer movementPlayer;
     public PlayerAnimations playerAnimations;
     public GameOver gameOver;
+    public SoundManager soundManager;
 
     public bool gotHit;
     public float damage;
@@ -48,6 +49,7 @@ public class Health : MonoBehaviour
         if(damage != 0 && playerAnimations.gameOver == false)
         {
             healthSlider.value -= damage;
+            soundManager.damaged = true;
 
             //if game over
             if(healthSlider.value == 0)
