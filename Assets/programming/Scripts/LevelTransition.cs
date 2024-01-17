@@ -9,12 +9,14 @@ public class LevelTransition : MonoBehaviour
     public GameObject cam;
     public CameraPlayerPosition cinemachineCam;
 
-    public Transform nextPlayerPosition;
-    public Transform nextCameraPosition;
+    public Transform[] nextPlayerPositions;
+    public Transform[] nextCameraPositions;
 
     public Image blackBackground;
     public float fadeDuration;
     public float delayDuration = 1f;
+
+    private int i;
 
 
     private void OnTriggerEnter(Collider other)
@@ -61,9 +63,10 @@ public class LevelTransition : MonoBehaviour
         StartCoroutine(FadeOutImage());
 
         //change position player
-        player.transform.position = nextPlayerPosition.position;
-        cam.transform.position = nextCameraPosition.position;
-        cinemachineCam.currentLevelCam = nextCameraPosition;
+        player.transform.position = nextPlayerPositions[i].position;
+        cam.transform.position = nextCameraPositions[i].position;
+        cinemachineCam.currentLevelCam = nextCameraPositions[i];
+        i++; 
     }
 
     IEnumerator FadeOutImage()
