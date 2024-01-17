@@ -27,6 +27,9 @@ public class MovementPlayer : MonoBehaviour
     public PlayerAnimations playerAnimations;
     public GameObject playerModel;
 
+    [Header("Sound")]
+    public AudioSource walkingSound;
+
 
 
     private void Start()
@@ -93,7 +96,17 @@ public class MovementPlayer : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 30);
         }
 
-        
+
+        //sound (UX)
+        if (isGrounded && speedCount != 0 && walkingSound.isPlaying == false)
+        {
+            walkingSound.Play();
+        }
+
+        else
+        {
+            walkingSound.Pause();
+        }
     }
 
     private void FixedUpdate()
