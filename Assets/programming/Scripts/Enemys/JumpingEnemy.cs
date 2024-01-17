@@ -24,6 +24,9 @@ public class JumpingEnemy : MonoBehaviour
 
     public float jumpDelay; //delay because the animation of the enemy begins a bit later 
 
+    private bool isGrounded;
+    public int objectsInTrigger;
+
     private void Start()
     {
         goingRight = true;
@@ -63,7 +66,13 @@ public class JumpingEnemy : MonoBehaviour
 
 
         //damage reset
-        damageCounter += Time.deltaTime; 
+        damageCounter += Time.deltaTime;
+
+        if (objectsInTrigger == 0)
+        {
+            isGrounded = false;
+
+        }
     }
 
     void Jump()
@@ -73,6 +82,7 @@ public class JumpingEnemy : MonoBehaviour
         // Delay using StartCoroutine
         StartCoroutine(DelayedJump());
     }
+
 
     IEnumerator DelayedJump()
     {
@@ -105,6 +115,34 @@ public class JumpingEnemy : MonoBehaviour
             other.gameObject.GetComponent<Health>().damage = damage;
 
             damageCounter = 0;
+        }
+    }
+
+    //is grounded check
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+
+            objectsInTrigger++;
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Ground" && isGrounded == false)
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            objectsInTrigger--;
         }
     }
 }

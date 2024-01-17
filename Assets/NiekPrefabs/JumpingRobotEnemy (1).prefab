@@ -97,6 +97,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3511649275573553732}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1805400180f6d1446b085baf5ba5568f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5825426693607938194}
   m_SourcePrefab: {fileID: 100100000, guid: 1805400180f6d1446b085baf5ba5568f, type: 3}
 --- !u!1 &8768362763385576302 stripped
 GameObject:
@@ -124,6 +128,7 @@ MonoBehaviour:
   jumpTime: 1
   maxAmountOfSideJumps: 4
   jumpDelay: 0.4
+  objectsInTrigger: 0
 --- !u!54 &5401979747531758124
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -207,3 +212,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   soundManager: {fileID: 0}
+--- !u!65 &-5825426693607938194
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768362763385576302}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7153332, y: 0.3545807, z: 1}
+  m_Center: {x: 0, y: -0.07294807, z: 0}
