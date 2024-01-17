@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeverTrigger : MonoBehaviour
 {
-    public GameObject door;
+    public GameObject[] doors;
     public Animator animator;
     public AudioSource leverPull;
 
@@ -18,7 +18,10 @@ public class LeverTrigger : MonoBehaviour
     {
         if(other.transform.gameObject.tag == "Player")
         {
-            door.gameObject.SetActive(false);
+            for (int i = 0; i < doors.Length; i++)
+            {
+                doors[i].gameObject.SetActive(false);
+            }
             animator.SetBool("leverPulled", true);
             leverPull.Play();
         }
