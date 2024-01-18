@@ -16,6 +16,10 @@ public class FlyingEnemy : MonoBehaviour
     private bool isStunned;
     private float dashTimeOut;
 
+    public float damage;
+    private float damageCounter;
+    public float damageResetTime;
+
     private void Start()
     {
         currentCheckpointIndex = 0;
@@ -42,6 +46,9 @@ public class FlyingEnemy : MonoBehaviour
                 }
             }
         }
+
+        //damage reset
+        damageCounter += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -50,6 +57,14 @@ public class FlyingEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Wall"))
         {
             StartCoroutine(ReturnToNextCheckpoint());
+        }
+
+        if (collision.gameObject.tag == "Player" && damageCounter > damageResetTime)
+        {
+            collision.gameObject.GetComponent<Health>().gotHit = true;
+            collision.gameObject.GetComponent<Health>().damage = damage;
+
+            damageCounter = 0;
         }
     }
 

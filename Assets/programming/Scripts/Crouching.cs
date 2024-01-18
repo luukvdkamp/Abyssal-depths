@@ -22,12 +22,14 @@ public class Crouching : MonoBehaviour
         {
             isCrouching = true;
             movementPlayer.speed = crouchSpeed;
+            GetComponent<CapsuleCollider>().height = 1;
         }
 
         else
         {
             movementPlayer.speed = playerNormalSpeed;
             isCrouching = false;
+            GetComponent<CapsuleCollider>().height = 1.56f;
         }
     }
 }
