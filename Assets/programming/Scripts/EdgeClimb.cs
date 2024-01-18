@@ -11,17 +11,16 @@ public class EdgeClimb : MonoBehaviour
     public bool isEdgeClimbing;
 
     public PlayerAnimations playerAnimations;
+    public MovementPlayer movementPlayer;
     public bool playEdgeClimbAnimation;
     public float edgeClimbAnimationTime;
     private float animationCounter;
-
-    public int teleportDirection;
     void Update()
     {
         climbResetCounter += Time.deltaTime;
         if(isEdgeClimbing && climbResetCounter > climbResetTime)
         {
-            gameObject.isStatic = true;
+            GetComponent<Rigidbody>().isKinematic = true;
             print("edgeClimbing");
             isEdgeClimbing = false;
             playerAnimations.edgeClimbing = true;
@@ -38,13 +37,17 @@ public class EdgeClimb : MonoBehaviour
         if(playEdgeClimbAnimation)
         {
             animationCounter += Time.deltaTime;
-            if(animationCounter > edgeClimbAnimationTime)
+            movementPlayer.enabled = false;
+            if (animationCounter > edgeClimbAnimationTime)
             {
+                movementPlayer.gravity = 0;
+                transform.position += new Vector3(0, 2, 0);
+                GetComponent<Rigidbody>().isKinematic = false;
+                movementPlayer.enabled = true;
                 animationCounter = 0;
                 playerAnimations.edgeClimbing = false;
                 playEdgeClimbAnimation = false;
                 gameObject.isStatic = false;
-                transform.position += new Vector3(teleportDirection, 1, 0);
             }
         }
     }

@@ -68,7 +68,7 @@ public class PlayerWallTrigger : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //edge climbing
-        if (other.gameObject.tag == "Ground" && Input.GetKeyDown(KeyCode.Space))
+        if (other.gameObject.tag == "Ground" && Input.GetKey(KeyCode.Space))
         {
             edgeClimb.isEdgeClimbing = true;
         }
