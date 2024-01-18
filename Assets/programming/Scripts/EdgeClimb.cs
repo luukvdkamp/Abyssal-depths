@@ -11,19 +11,41 @@ public class EdgeClimb : MonoBehaviour
     public bool isEdgeClimbing;
 
     public PlayerAnimations playerAnimations;
+    public bool playEdgeClimbAnimation;
+    public float edgeClimbAnimationTime;
+    private float animationCounter;
+
+    public int teleportDirection;
     void Update()
     {
+        climbResetCounter += Time.deltaTime;
         if(isEdgeClimbing && climbResetCounter > climbResetTime)
         {
-            GetComponent<Rigidbody>().AddForce(transform.up * edgeClimbForce * Time.deltaTime);
+            gameObject.isStatic = true;
+            print("edgeClimbing");
             isEdgeClimbing = false;
             playerAnimations.edgeClimbing = true;
+            climbResetCounter = 0;
+            playEdgeClimbAnimation = true;
         }
 
         else
         {
             isEdgeClimbing = false;
-            playerAnimations.edgeClimbing = false;
+        }
+
+        //animation
+        if(playEdgeClimbAnimation)
+        {
+            animationCounter += Time.deltaTime;
+            if(animationCounter > edgeClimbAnimationTime)
+            {
+                animationCounter = 0;
+                playerAnimations.edgeClimbing = false;
+                playEdgeClimbAnimation = false;
+                gameObject.isStatic = false;
+                transform.position += new Vector3(teleportDirection, 1, 0);
+            }
         }
     }
 }

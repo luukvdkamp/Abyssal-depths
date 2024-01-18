@@ -95,12 +95,10 @@ public class JumpingEnemy : MonoBehaviour
         if (goingRight)
         {
             GetComponent<Rigidbody>().AddForce(Vector3.right * jumpSideSpeed * Time.deltaTime);
-            print("jumpingSideways");
         }
         else if (goingLeft)
         {
             GetComponent<Rigidbody>().AddForce(Vector3.left * jumpSideSpeed * Time.deltaTime);
-            print("jumpingSideways");
         }
 
         jumpCounter = 0;
