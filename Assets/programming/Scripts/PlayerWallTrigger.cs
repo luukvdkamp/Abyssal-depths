@@ -10,6 +10,7 @@ public class PlayerWallTrigger : MonoBehaviour
     public WallJumping wallJumping;
     public MovementPlayer movementPlayer;
     public Rigidbody playerRigidbody;
+    public EdgeClimb edgeClimb;
 
     public float collidersInTrigger;
 
@@ -61,6 +62,15 @@ public class PlayerWallTrigger : MonoBehaviour
                 wallJumping.onLeftWall = false;
             }
             
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //edge climbing
+        if (other.gameObject.tag == "Ground" && Input.GetKeyDown(KeyCode.Space))
+        {
+            edgeClimb.isEdgeClimbing = true;
         }
     }
 }

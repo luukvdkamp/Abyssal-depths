@@ -40,6 +40,9 @@ public class PlayerAnimations : MonoBehaviour
     [Header("Crouching")]
     public float crouchInput;
 
+    [Header("EdgeClimbing")]
+    public bool edgeClimbing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,7 @@ public class PlayerAnimations : MonoBehaviour
         RopeClimbing();
         HealthPlayer();
         Crouching();
+        EdgeClimbing();
 
         // Rotate mouse aim
         if (gun.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false && wallJump == false)
@@ -314,5 +318,18 @@ public class PlayerAnimations : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         wallJump = false;
+    }
+
+    void EdgeClimbing()
+    {
+        if(edgeClimbing)
+        {
+            animator.SetBool("edgeClimbing", true);
+        }
+
+        else
+        {
+            animator.SetBool("edgeClimbing", false);
+        }
     }
 }
