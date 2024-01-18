@@ -23,14 +23,15 @@ public class LeverTrigger : MonoBehaviour
                 if(doors[i].activeInHierarchy)
                 {
                     doors[i].gameObject.SetActive(false);
+                    animator.SetBool("leverPulled", true);
                 }
 
                 else
                 {
                     doors[i].gameObject.SetActive(true);
+                    animator.SetBool("leverPulled", false);
                 }
             }
-            animator.SetBool("leverPulled", true);
             leverPull.Play();
         }
     }
