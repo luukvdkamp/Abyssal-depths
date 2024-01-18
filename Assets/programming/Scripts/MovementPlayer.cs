@@ -56,7 +56,7 @@ public class MovementPlayer : MonoBehaviour
         playerRigidbody.AddForce(-Vector3.up * gravity * Time.deltaTime);
         if(isGrounded == false)
         {
-            gravity += gravityMultiplier;
+            gravity += gravityMultiplier * Time.deltaTime;
         }
 
         else
