@@ -97,9 +97,12 @@ public class Health : MonoBehaviour
 
             }
 
-            fallingTime = 0;
-            fallingSound.Stop();
-            landingSound.Play();
+            else
+            {
+                fallingTime = 0;
+                fallingSound.Stop();
+                landingSound.Play();
+            }
         }
     }
 }
