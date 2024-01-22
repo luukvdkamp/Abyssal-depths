@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 413294007042648039}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: edgeClimb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6571545814053258982}
   - component: {fileID: 8995418332417585708}
   - component: {fileID: -1544041963161694015}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pipeexit
   m_TagString: Ground
   m_Icon: {fileID: 0}
