@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 5230d6290b6f5cf4a94287a0ac62d0ef
   - enabled: 1
-    path: Assets/Scenes/NiekScene.unity
-    guid: d28d50f4204c27145a423fd904952377
+    path: Assets/Scenes/MainScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
