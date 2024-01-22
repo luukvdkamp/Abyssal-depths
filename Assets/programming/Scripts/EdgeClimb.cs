@@ -9,6 +9,7 @@ public class EdgeClimb : MonoBehaviour
 
     public float edgeClimbForce;
     public bool isEdgeClimbing;
+    public bool rightWallClimbing;
 
     public PlayerAnimations playerAnimations;
     public MovementPlayer movementPlayer;
@@ -41,13 +42,27 @@ public class EdgeClimb : MonoBehaviour
             if (animationCounter > edgeClimbAnimationTime)
             {
                 movementPlayer.gravity = 0;
-                transform.position += new Vector3(0, 2, 0);
                 GetComponent<Rigidbody>().isKinematic = false;
                 movementPlayer.enabled = true;
                 animationCounter = 0;
                 playerAnimations.edgeClimbing = false;
                 playEdgeClimbAnimation = false;
                 gameObject.isStatic = false;
+
+
+                //what direction is the player going to teleport
+
+                if(rightWallClimbing)
+                {
+                    //rightWall
+                    transform.position += new Vector3(1, 1, 0);
+                }
+
+                else
+                {
+                    //leftWall
+                    transform.position += new Vector3(-1, 1, 0);
+                }
             }
         }
     }

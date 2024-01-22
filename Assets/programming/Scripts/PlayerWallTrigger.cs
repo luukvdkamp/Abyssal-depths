@@ -13,6 +13,7 @@ public class PlayerWallTrigger : MonoBehaviour
     public EdgeClimb edgeClimb;
 
     public float collidersInTrigger;
+    public Transform playerPosition;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -70,7 +71,18 @@ public class PlayerWallTrigger : MonoBehaviour
         //edge climbing
         if (other.gameObject.tag == "Ground" && Input.GetKey(KeyCode.Space) && other.GetComponent<Collider>().material == null)
         {
+            if(playerPosition.position.x < other.transform.position.x)
+            {
+                edgeClimb.rightWallClimbing = true;
+            }
+
+            else
+            {
+                edgeClimb.rightWallClimbing = false;
+            }
+
             edgeClimb.isEdgeClimbing = true;
+            print("working");
         }
     }
 }
