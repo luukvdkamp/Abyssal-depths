@@ -66,7 +66,7 @@ public class PlayerAnimations : MonoBehaviour
             // Keep the existing X and Z rotation, only modify Y-axis rotation
             transform.localRotation = Quaternion.Euler(0, 90, 0);
         }
-        else if(onRope == false)
+        else if(onRope == false && wallJumping.onWall == false && wallJump == false)
         {
             // Keep the existing X and Z rotation, only modify Y-axis rotation
             transform.localRotation = Quaternion.Euler(0, -90, 0);
