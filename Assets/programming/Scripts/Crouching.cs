@@ -23,6 +23,7 @@ public class Crouching : MonoBehaviour
             isCrouching = true;
             movementPlayer.speed = crouchSpeed;
             GetComponent<CapsuleCollider>().height = 1;
+            GetComponent<CapsuleCollider>().center = new Vector3(0, 0, 0);
         }
 
         else
@@ -30,6 +31,7 @@ public class Crouching : MonoBehaviour
             movementPlayer.speed = playerNormalSpeed;
             isCrouching = false;
             GetComponent<CapsuleCollider>().height = 1.56f;
+            GetComponent<CapsuleCollider>().center = new Vector3(0, 0.28f, 0);
         }
     }
 }

@@ -19,10 +19,7 @@ public class PlayerWallTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "Wall")
         {
-            wallJumping.onWall = true;
-            playerRigidbody.useGravity = false;
-            movementPlayer.gravity = 0;
-            movementPlayer.enabled = false;
+    
 
             if(collidersInTrigger == 0)
             {
@@ -68,21 +65,33 @@ public class PlayerWallTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //edge climbing
-        if (other.gameObject.tag == "Ground" && Input.GetKey(KeyCode.Space) && other.GetComponent<Collider>().material == null)
+        // edge climbing
+        if (other.gameObject.tag == "Ground" && Input.GetKey(KeyCode.Space))
         {
-            if(playerPosition.position.x < other.transform.position.x)
+            if (other.gameObject.tag != "Slope")
             {
-                edgeClimb.rightWallClimbing = true;
-            }
+                if (playerPosition.position.x < other.transform.position.x)
+                {
+                    edgeClimb.rightWallClimbing = true;
+                }
+                else
+                {
+                    edgeClimb.rightWallClimbing = false;
+                }
 
-            else
-            {
-                edgeClimb.rightWallClimbing = false;
-            }
+                edgeClimb.isEdgeClimbing = true;
 
-            edgeClimb.isEdgeClimbing = true;
-            print("working");
+                edgeClimb.edgeClimbPosition = other.transform.GetChild(0);
+                print("working");
+            }
+        }
+
+        if (other.gameObject.tag == "Wall")
+        {
+            wallJumping.onWall = true;
+            playerRigidbody.useGravity = false;
+            movementPlayer.gravity = 0;
+            movementPlayer.enabled = false;
         }
     }
 }

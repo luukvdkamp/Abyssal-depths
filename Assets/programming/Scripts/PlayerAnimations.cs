@@ -294,7 +294,7 @@ public class PlayerAnimations : MonoBehaviour
                 print("left");
             }
 
-            else if(wallJumping.onRightWall)
+            else
             {
                 transform.localRotation = Quaternion.Euler(0, 90, 0);
                 print("right");

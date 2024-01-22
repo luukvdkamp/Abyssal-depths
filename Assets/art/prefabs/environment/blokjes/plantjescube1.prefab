@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2261908432931796459}
   - component: {fileID: 2939779808798915150}
   - component: {fileID: 1092339930027511428}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plantje3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2222399479965388795}
   - component: {fileID: 2988234113994358878}
   - component: {fileID: 1052892686077818004}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plantje2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3154957427131634012}
   - component: {fileID: 2046730472085937913}
   - component: {fileID: 4288418385059293747}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plantje2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 3791609227844407248}
   - component: {fileID: 230065198617935989}
   - component: {fileID: 2654217073736922303}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plantje3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 8625786866808352102}
   - component: {fileID: 8958642866706736871}
   - component: {fileID: -2906329184393034547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: plantjescube1
   m_TagString: Ground
   m_Icon: {fileID: 0}

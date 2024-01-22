@@ -16,6 +16,9 @@ public class EdgeClimb : MonoBehaviour
     public bool playEdgeClimbAnimation;
     public float edgeClimbAnimationTime;
     private float animationCounter;
+
+    public Transform edgeClimbPosition;
+
     void Update()
     {
         climbResetCounter += Time.deltaTime;
@@ -55,13 +58,13 @@ public class EdgeClimb : MonoBehaviour
                 if(rightWallClimbing)
                 {
                     //rightWall
-                    transform.position += new Vector3(1, 1, 0);
+                    transform.localPosition += new Vector3(1, edgeClimbPosition.localPosition.y, 0);
                 }
 
                 else
                 {
                     //leftWall
-                    transform.position += new Vector3(-1, 1, 0);
+                    transform.localPosition += new Vector3(-1, edgeClimbPosition.localPosition.y, 0);
                 }
             }
         }

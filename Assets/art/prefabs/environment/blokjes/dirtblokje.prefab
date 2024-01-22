@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5482000022995714749}
   - component: {fileID: 2149876066491715502}
   - component: {fileID: 384398808059269264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: dirtblokje
   m_TagString: Ground
   m_Icon: {fileID: 0}
