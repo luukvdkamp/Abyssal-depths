@@ -60,7 +60,7 @@ public class Rope : MonoBehaviour
                 playerAnimations.onRight = true;
                 playerAnimations.onLeft = false;
 
-                if(Input.GetKeyDown(KeyCode.Space))
+                if(Input.GetKey(KeyCode.Space))
                 {
                     resetJump = true;
                     player.GetComponent<Rigidbody>().AddForce(transform.right * sideSpeed * Time.deltaTime);
@@ -79,7 +79,7 @@ public class Rope : MonoBehaviour
                 playerAnimations.onRight = false;
                 playerAnimations.onLeft = true;
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKey(KeyCode.Space))
                 {
                     resetJump = true;
                     player.GetComponent<Rigidbody>().AddForce(-transform.right * sideSpeed * Time.deltaTime);

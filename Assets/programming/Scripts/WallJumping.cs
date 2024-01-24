@@ -21,26 +21,23 @@ public class WallJumping : MonoBehaviour
     public bool onWall;
     public float slideSpeed = 0;
 
-
     private void Update()
     {
-        if (onWall)
+        if (Input.GetKeyDown(KeyCode.Space) && onWall)
         {
-
-            transform.Translate(Vector3.down * slideSpeed * Time.deltaTime);
-
-            slideSpeed += speedIncrease;
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                WallJump();
-            }
+            WallJump();
         }
     }
 
     private void FixedUpdate()
     {
-      
+        if (onWall)
+        {
+
+            transform.Translate(Vector3.down * slideSpeed * Time.fixedDeltaTime);
+
+            slideSpeed += speedIncrease * Time.fixedDeltaTime;
+        }
 
         slideSpeed = Mathf.Clamp(slideSpeed, 0, maxSlideSpeed);
 
@@ -66,8 +63,8 @@ public class WallJumping : MonoBehaviour
         if (onLeftWall)
         {
             //onLeftWall
-            playerRigidbody.AddForce(transform.right * wallJumpingSideSpeed * Time.deltaTime);
-            playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.deltaTime);
+            playerRigidbody.AddForce(transform.right * wallJumpingSideSpeed * Time.fixedDeltaTime);
+            playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.fixedDeltaTime);
 
             onWall = false;
             onLeftWall = false;
@@ -81,8 +78,8 @@ public class WallJumping : MonoBehaviour
         else
         {
             //onRightWall
-            playerRigidbody.AddForce(-transform.right * wallJumpingSideSpeed * Time.deltaTime);
-            playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.deltaTime);
+            playerRigidbody.AddForce(-transform.right * wallJumpingSideSpeed * Time.fixedDeltaTime);
+            playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.fixedDeltaTime);
 
             onWall = false;
             onRightWall = false;
