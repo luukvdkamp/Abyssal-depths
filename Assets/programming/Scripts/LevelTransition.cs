@@ -68,17 +68,17 @@ public class LevelTransition : MonoBehaviour
         // Ensure the image is fully opaque
         blackBackground.color = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, targetAlpha);
 
+        //change position player
+        player.transform.position = nextPlayerPositions[i].position;
+        cam.transform.position = nextCameraPositions[i].position;
+        cinemachineCam.currentLevelCam = nextCameraPositions[i];
+        i++;
+
         // Wait for the specified delay
         yield return new WaitForSeconds(delayDuration);
 
         // Start the fade-out process
         StartCoroutine(FadeOutImage());
-
-        //change position player
-        player.transform.position = nextPlayerPositions[i].position;
-        cam.transform.position = nextCameraPositions[i].position;
-        cinemachineCam.currentLevelCam = nextCameraPositions[i];
-        i++; 
     }
 
     IEnumerator FadeOutImage()
