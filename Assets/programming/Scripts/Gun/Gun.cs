@@ -9,9 +9,16 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        angle = Mathf.Atan2(targetPosition.position.y - transform.position.y, targetPosition.position.x - transform.position.x) * Mathf.Rad2Deg;
+        if(targetPosition.position.x > transform.position.x)
+        {
+            //player on right
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
 
-        // Rotate the gun
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        else
+        {
+            //player on left
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
     }
 }

@@ -17,19 +17,13 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        // Calculate the direction from barrel to player
+        barrel.LookAt(playerPosition);
         Vector3 rayDirection = playerPosition.position - barrel.transform.position;
 
-        // Perform the raycast
         Physics.Raycast(barrel.transform.position, rayDirection, out RaycastHit hit, 1000);
         if (hit.transform.gameObject.tag == "Player")
         {
-            // Draw the ray in the Scene view
             Debug.DrawRay(barrel.transform.position, rayDirection, Color.red);
-
-            // Handle the hit object if needed
-            // For example, you can access hit.collider.gameObject to get the GameObject hit
-            gunAimCode.enabled = true;
 
             fireCount += Time.deltaTime;
             if(fireCount > fireRate)
@@ -46,8 +40,7 @@ public class Turret : MonoBehaviour
         {
 
             fireCount = 0;
-            // If the ray doesn't hit anything, draw the full ray
-            gunAimCode.enabled = false;
+            
             Debug.DrawRay(barrel.transform.position, rayDirection, Color.green);
             
         }
