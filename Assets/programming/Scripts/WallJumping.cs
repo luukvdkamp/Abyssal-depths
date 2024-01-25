@@ -23,21 +23,22 @@ public class WallJumping : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && onWall)
+        if (onWall)
         {
-            WallJump();
+            transform.Translate(Vector3.down * slideSpeed * Time.deltaTime);
+
+            slideSpeed += speedIncrease;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                WallJump();
+            }
         }
     }
 
+
     private void FixedUpdate()
     {
-        if (onWall)
-        {
-
-            transform.Translate(Vector3.down * slideSpeed * Time.fixedDeltaTime);
-
-            slideSpeed += speedIncrease * Time.fixedDeltaTime;
-        }
 
         slideSpeed = Mathf.Clamp(slideSpeed, 0, maxSlideSpeed);
 
