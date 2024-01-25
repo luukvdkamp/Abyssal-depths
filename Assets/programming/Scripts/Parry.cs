@@ -6,6 +6,7 @@ public class Parry : MonoBehaviour
 {
     public GameObject gun;
     public GameObject knife;
+    public GameObject knifeModel;
 
     private bool resetParry;
     public float maxParryTime;
@@ -23,6 +24,7 @@ public class Parry : MonoBehaviour
         if(Input.GetButtonDown("Fire2") && parryCooldown == false)
         {
             knife.SetActive(true);
+            knifeModel.SetActive(true);
             gun.SetActive(false);
             parry.Play();
 
@@ -39,6 +41,7 @@ public class Parry : MonoBehaviour
                 parryCount = 0;
 
                 knife.SetActive(false);
+                knifeModel.SetActive(false);
                 gun.SetActive(true);
 
                 //give parry cooldown

@@ -10,11 +10,10 @@ public class PlayerAnimations : MonoBehaviour
     public WallJumping wallJumping;
     public Health health;
     public Bow bow;
-    public Gun gun;
+    public BowAim bowAim;
     public Crouching crouching;
 
     public Animator animator;
-    public Transform playerForward;
 
     [Header("Jumping")]
     public bool isJumping;
@@ -61,7 +60,7 @@ public class PlayerAnimations : MonoBehaviour
         EdgeClimbing();
 
         // Rotate mouse aim
-        if (gun.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false && wallJump == false)
+        if (bowAim.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false && wallJump == false)
         {
             // Keep the existing X and Z rotation, only modify Y-axis rotation
             transform.localRotation = Quaternion.Euler(0, 90, 0);
@@ -74,7 +73,7 @@ public class PlayerAnimations : MonoBehaviour
 
    
         //bow aiming
-        float angle = gun.angle;
+        float angle = bowAim.angle;
         animator.SetFloat("AimAngle", angle);
 
     }
