@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowerForce: 20
-  speed: 3
+  speed: 1.5
   chargeTime: 0
   lifeTime: 3
   gravityStrength: 100000

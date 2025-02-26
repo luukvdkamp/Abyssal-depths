@@ -80,10 +80,8 @@ public class MovementPlayer : MonoBehaviour
         int groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1, groundLayerMask))
         {
-            // Your existing code to calculate slope angle and rotate the player
+            //calculeer slope angle
             float slopeAngle = Vector3.Angle(hit.normal, Vector3.up) * Mathf.Sign(hit.normal.x);
-
-            //float clampedRotation = Mathf.Clamp(slopeAngle, -45, 45);
 
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, -slopeAngle);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 30);

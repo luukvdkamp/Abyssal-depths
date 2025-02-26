@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bow : MonoBehaviour
 {
     public Transform barrel;
     public GameObject bulletPrefab;
+    public Slider rangeSlider;
 
     public float chargeTime;
     public float maxChargeTime;
@@ -13,6 +15,8 @@ public class Bow : MonoBehaviour
 
     void Update()
     {
+
+        rangeSlider.value = chargeTime;
 
         if (Input.GetButtonUp("Fire1") && chargeTime > minimumChargeTime || chargeTime > maxChargeTime)
         {
@@ -28,12 +32,15 @@ public class Bow : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             chargeTime += Time.deltaTime;
+            rangeSlider.gameObject.SetActive(true);
 
         }
 
         else
         {
             chargeTime = 0;
+            rangeSlider.gameObject.SetActive(false);
+
         }
     }
 }
