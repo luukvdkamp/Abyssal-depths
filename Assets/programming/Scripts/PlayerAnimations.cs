@@ -57,19 +57,8 @@ public class PlayerAnimations : MonoBehaviour
         RopeClimbing();
         HealthPlayer();
         Crouching();
-        EdgeClimbing();
 
-        // Rotate mouse aim
-        if (bowAim.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false && wallJump == false)
-        {
-            // Keep the existing X and Z rotation, only modify Y-axis rotation
-            transform.localRotation = Quaternion.Euler(0, 90, 0);
-        }
-        else if(onRope == false && wallJumping.onWall == false && wallJump == false)
-        {
-            // Keep the existing X and Z rotation, only modify Y-axis rotation
-            transform.localRotation = Quaternion.Euler(0, -90, 0);
-        }
+        //EdgeClimbing();
 
    
         //bow aiming
@@ -105,6 +94,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void Walking()
     {
+
         //walking
         float walkSpeed = Input.GetAxisRaw("Horizontal");
         if (walkSpeed != 0 && movementPlayer.isGrounded)
@@ -143,6 +133,19 @@ public class PlayerAnimations : MonoBehaviour
                     animator.SetFloat("walking", 1);
                 }
             }
+
+            // Rotate mouse aim
+            if (bowAim.targetPosition.position.x > transform.position.x && onRope == false && wallJumping.onWall == false && wallJump == false)
+            {
+                // Keep the existing X and Z rotation, only modify Y-axis rotation
+                transform.localRotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if (onRope == false && wallJumping.onWall == false && wallJump == false)
+            {
+                // Keep the existing X and Z rotation, only modify Y-axis rotation
+                transform.localRotation = Quaternion.Euler(0, -90, 0);
+            }
+
         }
 
         else
@@ -282,10 +285,6 @@ public class PlayerAnimations : MonoBehaviour
         {
             print("onWall");
             animator.SetBool("onWall", true);
-            if(animator.GetCurrentAnimatorStateInfo(0).IsName("WallJump"))
-            {
-                animator.speed = 0;
-            }
 
             if (wallJumping.onLeftWall)
             {
@@ -293,10 +292,15 @@ public class PlayerAnimations : MonoBehaviour
                 print("left");
             }
 
-            else
+            else if(wallJumping.onRightWall) 
             {
                 transform.localRotation = Quaternion.Euler(0, 90, 0);
                 print("right");
+            }
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("WallJump"))
+            {
+                animator.speed = 0;
             }
         }
 

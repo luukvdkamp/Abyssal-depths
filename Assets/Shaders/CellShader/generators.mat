@@ -49,7 +49,7 @@ Material:
     - _RimPower: 5
     - _ToonRampOffset: 0
     - _ToonRampOffsetPoint: 0.567
-    - _ToonRampSmoothness: 0.36
+    - _ToonRampSmoothness: -0.14
     m_Colors:
     - _ToonRampTinting: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

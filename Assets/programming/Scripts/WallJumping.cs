@@ -14,6 +14,9 @@ public class WallJumping : MonoBehaviour
     public float wallJumpingUpSpeed;
     public float wallJumpingSideSpeed;
 
+    public float waitTimeBeforeJump;
+    private float waitBeforeJumpCounter;
+
     [Header("Don't edit")]
     public bool onLeftWall;
     public bool onRightWall;
@@ -28,11 +31,18 @@ public class WallJumping : MonoBehaviour
             transform.Translate(Vector3.down * slideSpeed * Time.deltaTime);
 
             slideSpeed += speedIncrease;
+            waitBeforeJumpCounter += Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && waitBeforeJumpCounter > waitTimeBeforeJump)
             {
                 WallJump();
+                waitBeforeJumpCounter = 0;
             }
+        }
+
+        else
+        {
+            waitBeforeJumpCounter = waitTimeBeforeJump;
         }
     }
 
@@ -59,37 +69,40 @@ public class WallJumping : MonoBehaviour
 
     void WallJump()
     {
+        StartCoroutine(WallJumpCoroutine());
+    }
 
+    private IEnumerator WallJumpCoroutine()
+    {
         playerAnimations.wallJump = true;
+
         if (onLeftWall)
         {
-            //onLeftWall
             playerRigidbody.AddForce(transform.right * wallJumpingSideSpeed * Time.fixedDeltaTime);
             playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.fixedDeltaTime);
 
-            onWall = false;
-            onLeftWall = false;
-            playerRigidbody.useGravity = true;
-
-            slideSpeed = 0;
-
-            movementPlayer.enabled = true;
         }
-
         else
         {
-            //onRightWall
             playerRigidbody.AddForce(-transform.right * wallJumpingSideSpeed * Time.fixedDeltaTime);
             playerRigidbody.AddForce(transform.up * wallJumpingUpSpeed * Time.fixedDeltaTime);
 
-            onWall = false;
-            onRightWall = false;
-            playerRigidbody.useGravity = true;
-
-            slideSpeed = 0;
-
-            movementPlayer.enabled = true;
         }
 
+        print("jump");
+
+        yield return new WaitForSeconds(0.5f); 
+
+        if (onLeftWall)
+            onLeftWall = false;
+        else
+            onRightWall = false;
+
+        onWall = false;
+        playerRigidbody.useGravity = true;
+        slideSpeed = 0;
+        movementPlayer.enabled = true;
+        playerAnimations.wallJump = false; 
     }
+
 }

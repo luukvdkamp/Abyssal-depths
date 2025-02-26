@@ -58,13 +58,13 @@ public class EdgeClimb : MonoBehaviour
                 if(rightWallClimbing)
                 {
                     //rightWall
-                    transform.localPosition += new Vector3(1, edgeClimbPosition.localPosition.y, 0);
+                    transform.localPosition += new Vector3(1, 0.5f, 0);
                 }
 
                 else
                 {
                     //leftWall
-                    transform.localPosition += new Vector3(-1, edgeClimbPosition.localPosition.y, 0);
+                    transform.localPosition += new Vector3(-1, 0.5f, 0);
                 }
             }
         }
