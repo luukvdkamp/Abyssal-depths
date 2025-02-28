@@ -105,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1371310307537046520}
+  - component: {fileID: 6853133332100186388}
   m_Layer: 0
   m_Name: TurretRobot
   m_TagString: Untagged
@@ -130,6 +131,27 @@ Transform:
   - {fileID: 6509993677139782698}
   m_Father: {fileID: 7856975112787750657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6853133332100186388
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750791780210807106}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f584a997be50acf40a1ad15bffa8063a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2015129397962234914
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +357,8 @@ MonoBehaviour:
   bullet: {fileID: 5645648518968470385, guid: 45d66caf33728f1429a1b8a7d2ac8f8a, type: 3}
   barrel: {fileID: 1630132809661738294}
   gunShot: {fileID: 3931231830477257690}
+  turretHealth: {fileID: -33561437409971270}
+  animatorTurret: {fileID: 6853133332100186388}
 --- !u!82 &3931231830477257690
 AudioSource:
   m_ObjectHideFlags: 0

@@ -15,6 +15,15 @@ public class Turret : MonoBehaviour
 
     public AudioSource gunShot;
 
+    public EnemyHealth turretHealth;
+    public Animator animatorTurret;
+    private float beginHealth;
+
+    private void Start()
+    {
+        beginHealth = turretHealth.health;
+    }
+
     private void Update()
     {
         barrel.LookAt(playerPosition);
@@ -36,6 +45,7 @@ public class Turret : MonoBehaviour
                 gunShot.Play();
             }
         }
+
         else
         {
 
@@ -43,6 +53,18 @@ public class Turret : MonoBehaviour
             
             Debug.DrawRay(barrel.transform.position, rayDirection, Color.green);
             
+        }
+
+        // check for damaged animation
+        if(beginHealth != turretHealth.health)
+        {
+            animatorTurret.SetBool("Damaged", true);
+            beginHealth = turretHealth.health;
+        }
+
+        if (animatorTurret.GetCurrentAnimatorStateInfo(0).IsName("IdleTurret"))
+        {
+            animatorTurret.SetBool("Damaged", false);
         }
     }
 }
