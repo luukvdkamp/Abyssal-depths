@@ -257,3 +257,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   soundManager: {fileID: 0}
+  particleDestroy: {fileID: 661076494565172290, guid: 0617d888401ae304c818ea1aa318683d,
+    type: 3}

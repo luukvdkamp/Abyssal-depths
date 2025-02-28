@@ -15,7 +15,7 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKey(KeyCode.E))
             {
                 other.gameObject.GetComponent<Health>().healthSlider.maxValue += hpGain;
                 other.gameObject.GetComponent<Health>().healthSlider.value += hpGain;

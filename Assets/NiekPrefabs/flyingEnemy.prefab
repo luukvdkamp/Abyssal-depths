@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   soundManager: {fileID: 0}
+  particleDestroy: {fileID: 661076494565172290, guid: 0617d888401ae304c818ea1aa318683d,
+    type: 3}
 --- !u!1001 &7232801567745482270
 PrefabInstance:
   m_ObjectHideFlags: 0

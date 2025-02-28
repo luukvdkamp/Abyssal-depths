@@ -212,6 +212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   soundManager: {fileID: 0}
+  particleDestroy: {fileID: 661076494565172290, guid: 0617d888401ae304c818ea1aa318683d,
+    type: 3}
 --- !u!65 &-5825426693607938194
 BoxCollider:
   m_ObjectHideFlags: 0

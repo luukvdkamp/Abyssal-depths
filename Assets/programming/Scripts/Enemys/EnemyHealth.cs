@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float health;
     public SoundManager soundManager;
+    public GameObject particleDestroy;
 
     private float previousValue;
 
@@ -27,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            GameObject particle = Instantiate(particleDestroy, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
