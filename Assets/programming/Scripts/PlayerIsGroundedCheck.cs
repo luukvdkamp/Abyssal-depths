@@ -6,16 +6,9 @@ public class PlayerIsGroundedCheck : MonoBehaviour
 {
     public MovementPlayer movementPlayer;
     public int objectsInTrigger;
-    private int groundLayerMask;
-
-    public void Start()
-    {
-        groundLayerMask = 1 << LayerMask.NameToLayer("Ground");
-    }
 
     public void Update()
     {
-        
 
         if (objectsInTrigger == 0)
         {
@@ -26,7 +19,7 @@ public class PlayerIsGroundedCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((groundLayerMask & (1 << other.gameObject.layer)) != 0)
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Slope")
         {
             movementPlayer.isGrounded = true;
             if (objectsInTrigger == 0)
@@ -40,7 +33,7 @@ public class PlayerIsGroundedCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if ((groundLayerMask & (1 << other.gameObject.layer)) != 0 && !movementPlayer.isGrounded)
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Slope" && !movementPlayer.isGrounded)
         {
             movementPlayer.isGrounded = true;
         }
@@ -48,7 +41,7 @@ public class PlayerIsGroundedCheck : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((groundLayerMask & (1 << other.gameObject.layer)) != 0)
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Slope")
         {
             objectsInTrigger--;
         }

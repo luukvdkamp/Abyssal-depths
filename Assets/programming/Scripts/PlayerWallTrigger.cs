@@ -16,13 +16,47 @@ public class PlayerWallTrigger : MonoBehaviour
     public float collidersInTrigger;
     public Transform playerPosition;
 
+    public float timeBeforeAllowColliderRemoval;
+    private float colliderRemovalCounter;
+
+    private bool exitTrigger;
+
+    public void Update()
+    {
+        colliderRemovalCounter += Time.deltaTime;
+
+        if (exitTrigger && colliderRemovalCounter > timeBeforeAllowColliderRemoval) 
+        {
+            exitTrigger = false;
+            collidersInTrigger = 0;
+            colliderRemovalCounter = 0;
+
+            if (collidersInTrigger == 0)
+            {
+                wallJumping.onWall = false;
+                playerRigidbody.useGravity = true;
+
+                movementPlayer.enabled = true;
+
+                wallJumping.onRightWall = false;
+                wallJumping.onLeftWall = false;
+            }
+
+            playerAnimations.animator.speed = 1;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Wall")
+        if(other.gameObject.tag == "Wall" && movementPlayer.isGrounded == false)
         {
-    
+            exitTrigger = false;
+            wallJumping.onWall = true;
+            playerRigidbody.useGravity = false;
+            movementPlayer.gravity = 0;
+            movementPlayer.enabled = false;
 
-            if(collidersInTrigger == 0)
+            if (collidersInTrigger == 0)
             {
                 playerRigidbody.velocity = new Vector3(0, 0, 0);
             }
@@ -48,21 +82,7 @@ public class PlayerWallTrigger : MonoBehaviour
 
         if (other.gameObject.tag == "Wall")
         {
-            collidersInTrigger--;
-
-            if(collidersInTrigger == 0)
-            {
-                wallJumping.onWall = false;
-                playerRigidbody.useGravity = true;
-    
-                movementPlayer.enabled = true;
-
-                wallJumping.onRightWall = false;
-                wallJumping.onLeftWall = false;
-            }
-
-            playerAnimations.animator.speed = 1;
-            
+            exitTrigger = true;
         }
     }
 
@@ -93,12 +113,5 @@ public class PlayerWallTrigger : MonoBehaviour
 
         */
 
-        if (other.gameObject.tag == "Wall")
-        {
-            wallJumping.onWall = true;
-            playerRigidbody.useGravity = false;
-            movementPlayer.gravity = 0;
-            movementPlayer.enabled = false;
-        }
     }
 }
