@@ -65,20 +65,20 @@ public class TurretTestAnimator : MonoBehaviour
                 {
                     // omhoog
                     if (playerPosition.position.y > transform.position.y)
-                        frameTarget = 50f;
+                        frameTarget = 37.5f;
                     // omlaag
                     else
-                        frameTarget = 25f;
+                        frameTarget = 12.5f;
                 }
                 // rechts
                 else
                 {
                     // omhoog
                     if (playerPosition.position.y > transform.position.y)
-                        frameTarget = 75f;
+                        frameTarget = 87.5f;
                     // omlaag
                     else
-                        frameTarget = 100f;
+                        frameTarget = 62.5f;
                 }
 
                 // zet frame over naar normalizedTime
