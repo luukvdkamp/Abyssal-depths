@@ -40,7 +40,7 @@ public class BowBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Wall")
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Slope")
         {
             stuckInGround = true;
             GetComponent<Rigidbody>().isKinematic = true;
