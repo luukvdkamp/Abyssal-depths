@@ -13,6 +13,9 @@ public class Bow : MonoBehaviour
     public float maxChargeTime;
     public float minimumChargeTime;
 
+    [HideInInspector]
+    public int chargeSpeedUpgrade = 1;
+
     void Update()
     {
 
@@ -31,7 +34,7 @@ public class Bow : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
-            chargeTime += Time.deltaTime;
+            chargeTime += Time.deltaTime * chargeSpeedUpgrade;
             rangeSlider.gameObject.SetActive(true);
 
         }
@@ -42,5 +45,6 @@ public class Bow : MonoBehaviour
             rangeSlider.gameObject.SetActive(false);
 
         }
+
     }
 }

@@ -14,7 +14,9 @@ public class BowBullet : MonoBehaviour
     private float amountofGravity;
     public float gravityStrength;
     private bool stuckInGround;
-    public float damage;
+
+    [HideInInspector]
+    public int damage;
 
 
     private void Update()

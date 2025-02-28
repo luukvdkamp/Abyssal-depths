@@ -13,6 +13,8 @@ public class Knife : MonoBehaviour
 
     public AudioSource parry;
 
+    [HideInInspector]
+    public int parryBulletSpeedMultiplier = 2;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +25,7 @@ public class Knife : MonoBehaviour
             enemy = other.GetComponent<EnemyBullet>().enemyThatShotBullet.gameObject;
 
             //multiply
-            other.GetComponent<EnemyBullet>().bulletSpeed *= 2;
+            other.GetComponent<EnemyBullet>().bulletSpeed *= parryBulletSpeedMultiplier;
             other.GetComponent<EnemyBullet>().lifetimeCount = 0;
             other.GetComponent<EnemyBullet>().bulletDamage *= 2;
 

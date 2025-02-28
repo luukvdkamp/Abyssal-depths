@@ -21,6 +21,8 @@ public class LevelTransition : MonoBehaviour
     private void Update()
     {
         //devtool
+
+        
         if(Input.GetKeyDown(KeyCode.T))
         {
             //change position player
@@ -29,6 +31,7 @@ public class LevelTransition : MonoBehaviour
             cinemachineCam.currentLevelCam = nextCameraPositions[i];
             i++;
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
