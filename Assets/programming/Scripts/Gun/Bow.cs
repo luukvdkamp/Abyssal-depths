@@ -16,6 +16,8 @@ public class Bow : MonoBehaviour
     [HideInInspector]
     public int chargeSpeedUpgrade = 1;
 
+    public GameObject bowModel;
+
     void Update()
     {
 
@@ -36,6 +38,7 @@ public class Bow : MonoBehaviour
         {
             chargeTime += Time.deltaTime * chargeSpeedUpgrade;
             rangeSlider.gameObject.SetActive(true);
+            bowModel.SetActive(true);
 
         }
 
@@ -43,7 +46,7 @@ public class Bow : MonoBehaviour
         {
             chargeTime = 0;
             rangeSlider.gameObject.SetActive(false);
-
+            bowModel.SetActive(false);
         }
 
     }

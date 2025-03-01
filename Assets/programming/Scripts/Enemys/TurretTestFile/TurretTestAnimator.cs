@@ -56,6 +56,11 @@ public class TurretTestAnimator : MonoBehaviour
                     }
                 }
 
+                else
+                {
+                    aimOffsetCounter = 0;
+                }
+
 
 
                 float frameTarget = 0f;
